@@ -1,0 +1,265 @@
+[
+ {
+  "group": "A. Xử lý trung tâm và thu ảnh (Raspberry Pi 4)",
+  "items": [
+   [
+    "Raspberry Pi 4 Model B 4 GB",
+    1,
+    1750000,
+    "Gateway, AI, CSDL, broker",
+    1
+   ],
+   [
+    "Thẻ nhớ microSD 32 GB Class 10 / A1",
+    1,
+    110000,
+    "Cài Raspberry Pi OS 64-bit",
+    1
+   ],
+   [
+    "Nguồn USB-C 5,1 V – 3 A cho Pi 4",
+    1,
+    120000,
+    "Loại thường; bản chính hãng khoảng 250k",
+    1
+   ],
+   [
+    "Bộ tản nhiệt nhôm + quạt 5 V cho Pi 4",
+    1,
+    60000,
+    "Pi 4 nóng khi suy luận liên tục",
+    1
+   ],
+   [
+    "Camera OV5647 5 MP cho Pi (kèm cáp)",
+    1,
+    150000,
+    "Rẻ hơn IMX219 (≈ 400k); cáp kèm theo ngắn (≈ 15 cm) nên gắn Pi trên cùng giá đỡ với camera",
+    0
+   ]
+  ]
+ },
+ {
+  "group": "B. Node A – kiosk và khay trả",
+  "items": [
+   [
+    "ESP32 DevKit V1 30 chân (ESP32-WROOM-32, CH340)",
+    2,
+    95000,
+    "1 cho Node A, 1 cho Node B; bản CH340 rẻ hơn CP2102",
+    2
+   ],
+   [
+    "Cáp micro USB (nạp code)",
+    2,
+    15000,
+    "Kiểm tra cổng của board (micro USB hay USB-C)",
+    2
+   ],
+   [
+    "Module RFID RC522 + 1 thẻ + 1 móc khóa",
+    1,
+    35000,
+    "13,56 MHz; thử thẻ sinh viên trước khi mua",
+    0
+   ],
+   [
+    "LCD 1602 + mạch I2C PCF8574",
+    1,
+    50000,
+    "2 dòng × 16 ký tự, đủ hiện tên và thông báo; rẻ hơn LCD 2004 khoảng 35k",
+    0
+   ],
+   [
+    "Module chuyển mức logic BSS138 4 kênh",
+    1,
+    12000,
+    "I2C 3,3 V ↔ 5 V cho LCD",
+    0
+   ],
+   [
+    "Load cell 1 kg + module HX711 (bộ)",
+    3,
+    40000,
+    "1 dưới khay + 2 dưới ngăn; HX711 cấp 3,3 V (không cấp 5 V); mỗi bộ cần 2 tấm đế",
+    0
+   ],
+   [
+    "Còi chip 5 V loại active",
+    1,
+    4000,
+    "Loại active: chỉ cần bật/tắt GPIO qua S8050, không cần PWM",
+    0
+   ],
+   [
+    "Transistor S8050 (gói 10 con)",
+    1,
+    5000,
+    "Lái còi, điện trở nền 1 kΩ",
+    0
+   ],
+   [
+    "MOSFET IRLZ44N (logic-level, TO-220)",
+    1,
+    12000,
+    "Bật/tắt đèn khay (≈ 120 mA); cổng 330 Ω, kéo xuống 10 kΩ",
+    0
+   ],
+   [
+    "LED trắng 5 mm siêu sáng (6 con) + điện trở",
+    1,
+    6000,
+    "Đèn khay; mỗi LED nối tiếp 100 Ω từ 5 V (≈ 19 mA)",
+    0
+   ]
+  ]
+ },
+ {
+  "group": "C. Node B – tủ 2 ngăn",
+  "items": [
+   [
+    "Servo SG90",
+    2,
+    25000,
+    "Khóa 2 ngăn; dùng MG90S (bánh răng kim loại) nếu chốt nặng",
+    0
+   ],
+   [
+    "LED 5 mm đỏ + xanh lá (2 con mỗi màu)",
+    1,
+    4000,
+    "Mỗi ngăn 1 đỏ (khóa) + 1 xanh (mở), GPIO qua 330 Ω; chọn xanh lá loại thường (Vf ≈ 2,2 V), loại xanh ngọc Vf ≈ 3 V sẽ rất mờ ở 3,3 V",
+    0
+   ]
+  ]
+ },
+ {
+  "group": "D. Nguồn và linh kiện phụ",
+  "items": [
+   [
+    "Adapter 5 V – 3 A, jack DC 5,5 × 2,1",
+    1,
+    60000,
+    "Cấp cho 2 node (qua chân VIN) và servo; dùng sạc điện thoại 5 V – 2 A nếu có (2 servo mở lần lượt)",
+    0
+   ],
+   [
+    "Jack DC cái 5,5 × 2,1",
+    1,
+    3000,
+    "Đầu vào nguồn chung",
+    0
+   ],
+   [
+    "Tụ hóa 1000 µF – 16 V",
+    2,
+    2000,
+    "1 tại nguồn servo (Node B), 1 tại đầu vào 5 V Node A",
+    0
+   ],
+   [
+    "Tụ gốm 100 nF (gói 10 con)",
+    1,
+    5000,
+    "Lọc nguồn từng module",
+    0
+   ],
+   [
+    "Điện trở 1/4 W (100 Ω, 330 Ω, 1 kΩ, 4,7 kΩ, 10 kΩ)",
+    1,
+    15000,
+    "Mua gói mỗi loại 10–20 con; 100 Ω cho LED trắng",
+    0
+   ],
+   [
+    "Cầu chì tự phục hồi (polyfuse) 2 A",
+    1,
+    2000,
+    "Bảo vệ đầu vào 5 V",
+    0
+   ],
+   [
+    "PCB đục lỗ phủ đồng 2 mặt 9 × 15 cm",
+    2,
+    18000,
+    "1 tấm mỗi node; tấm 7 × 9 cm không đủ chỗ cho ESP32 + HX711 + header",
+    0
+   ],
+   [
+    "Hàng rào đực + cái 2,54 mm (bộ)",
+    1,
+    15000,
+    "Cắm ESP32, module rời",
+    0
+   ],
+   [
+    "Dây bus đực–cái, cái–cái 20 cm (40 sợi)",
+    1,
+    20000,
+    "",
+    0
+   ],
+   [
+    "Domino (terminal) 2 chân",
+    4,
+    2000,
+    "Nối dây nguồn, dây load cell",
+    0
+   ],
+   [
+    "Dây điện đơn lõi 0,5 mm (dây điện thoại), 5 m",
+    1,
+    10000,
+    "Đi dây tín hiệu trên PCB đục lỗ",
+    0
+   ],
+   [
+    "Dây nguồn đỏ đen 2 × 0,5 mm², 2 m",
+    1,
+    10000,
+    "Kéo 5 V từ adapter tới 2 node",
+    0
+   ],
+   [
+    "Thiếc hàn 0,8 mm + nhựa thông",
+    1,
+    25000,
+    "Bỏ qua nếu nhóm đã có",
+    0
+   ]
+  ]
+ },
+ {
+  "group": "E. Cơ khí và mô hình tủ",
+  "items": [
+   [
+    "Tấm Formex 5 mm (khổ A2)",
+    1,
+    30000,
+    "Khay trả, 2 ngăn có nắp, tấm đế load cell, giá đỡ camera + Pi",
+    0
+   ],
+   [
+    "Tấm xốp EVA (lót khay cắt theo hình dụng cụ)",
+    1,
+    20000,
+    "Lót khay, cắt theo hình dụng cụ",
+    0
+   ],
+   [
+    "Bản lề mini + chốt cửa",
+    2,
+    8000,
+    "Nắp 2 ngăn; servo chốt vào nắp để khóa, không có nắp thì không khóa được",
+    0
+   ],
+   [
+    "Ốc vít M3 (mạch) + ốc M4/M5 (load cell) + long đen, trụ đồng",
+    1,
+    25000,
+    "Kiểm tra cỡ lỗ ren của load cell khi nhận hàng; long đen làm đệm để thanh cân có khe uốn",
+    0
+   ]
+  ]
+ }
+]

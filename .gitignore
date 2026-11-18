@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.pio/
+.vscode/
+build/
+*.tflite.tmp
+pi/ai/dataset/
+*-backups/
+~$*
+.DS_Store
+Thumbs.db
