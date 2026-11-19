@@ -60,7 +60,7 @@ arrow(8.1, 2.6, 7.4, 3.75, "Wi-Fi/MQTT", both=True, lx=0.1, ly=-0.05)
 # Peripherals Node A
 box(0.05, 0.1, 1.85, 1.3, "NHẬN DẠNG", "RFID RC522\n13,56 MHz\n(SPI)")
 box(2.0, 0.1, 1.85, 1.3, "CÂN KHAY", "Load cell 1 kg\n+ HX711\n(DOUT/SCK)")
-box(3.95, 0.1, 1.85, 1.3, "HIỂN THỊ & BÁO", "LCD 16x2 (I2C)\nBuzzer, đèn khay\n(PWM/GPIO)")
+box(3.95, 0.1, 1.85, 1.3, "HIỂN THỊ & BÁO", "LCD 16x2 (I2C)\nCòi, đèn khay,\nnút báo hỏng (GPIO)")
 arrow(0.97, 1.4, 1.2, 1.95)
 arrow(2.92, 1.4, 2.7, 1.95)
 arrow(3.6, 1.95, 4.4, 1.4)

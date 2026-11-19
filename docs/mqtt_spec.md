@@ -2,6 +2,8 @@
 
 Broker: Mosquitto chạy trên Raspberry Pi 4, cổng 1883, có user/password. Dùng MQTT 3.1.1.
 
+Mạng: Pi 4 tự phát Wi-Fi 2,4 GHz WPA2-PSK (hostapd + dnsmasq), Pi có IP cố định `192.168.4.1`. ESP32 kết nối broker theo IP này. Không dùng Wi-Fi của trường.
+
 ## Quy ước chung
 
 - Mọi bản tin dùng **QoS 1**. Vì QoS 1 có thể giao một bản tin nhiều lần, bên nhận phải tự loại trùng.
@@ -9,6 +11,8 @@ Broker: Mosquitto chạy trên Raspberry Pi 4, cổng 1883, có user/password. D
 - Lệnh từ backend có trường `cid`, ví dụ `C-88`. Node trả `ack` kèm đúng `cid` đó.
 - Keepalive 30 s. Mỗi node khai báo Last Will `lab/{node}/status = "offline"` (retained) khi kết nối, và publish `"online"` (retained) ngay sau khi kết nối thành công.
 - Khối lượng tính bằng gam, kiểu số thực, làm tròn 0,1 g.
+- Dung sai khối lượng của từng dụng cụ = min(10 g, ½ khối lượng phụ kiện nhẹ nhất), lưu trong CSDL, không dùng phần trăm.
+- Sau mỗi lần kết nối (kể cả sau khởi động lại), Node B publish lại trạng thái thật của từng ngăn để ghi đè bản tin retained cũ.
 
 ## Danh sách topic
 
@@ -16,6 +20,7 @@ Broker: Mosquitto chạy trên Raspberry Pi 4, cổng 1883, có user/password. D
 |---|---|---|---|
 | `lab/kioskA/card` | Node A → Pi | không | `{"eid":"A-1024","uid":"04A1B2C3"}` |
 | `lab/kioskA/tray` | Node A → Pi | không | `{"eid":"A-1025","m":352.4,"stable":true}` |
+| `lab/kioskA/button` | Node A → Pi | không | `{"eid":"A-1026","btn":"fault"}` (nút báo hỏng) |
 | `lab/kioskA/cmd` | Pi → Node A | không | `{"cid":"C-88","lcd":["Dat dung cu","len khay"],"lamp":1,"beep":1}` |
 | `lab/cabB/cmd` | Pi → Node B | không | `{"cid":"C-89","slot":2,"action":"unlock"}` |
 | `lab/cabB/ack` | Node B → Pi | không | `{"cid":"C-89","ok":true}` |

@@ -71,10 +71,10 @@ const line = { style: BorderStyle.SINGLE, size: 6, color: "000000" };
 const allB = { top: line, bottom: line, left: line, right: line };
 const infoCell = (a, b) => new TableCell({ width: { size: CW, type: WidthType.DXA }, borders: allB, margins: { top: 40, bottom: 40, left: 100, right: 100 },
   children: [new Paragraph({ spacing: { after: 0 }, children: [B(a)] }), new Paragraph({ spacing: { after: 0 }, children: [B(b)] })] });
-const infoTable = new Table({ width: { size: CW, type: WidthType.DXA }, columnWidths: [CW], rows: [
-  new TableRow({ children: [infoCell("Sinh viên 1: [Họ và tên]", "MSSV: [..........]")] }),
-  new TableRow({ children: [infoCell("Sinh viên 2: [Họ và tên]", "MSSV: [..........]")] }),
-] });
+const svCell = (t, w) => new TableCell({ width: { size: w, type: WidthType.DXA }, borders: allB, margins: { top: 30, bottom: 30, left: 100, right: 100 },
+  children: [new Paragraph({ spacing: { after: 0 }, children: [B(t)] })] });
+const infoTable = new Table({ width: { size: CW, type: WidthType.DXA }, columnWidths: [6400, CW - 6400],
+  rows: [1, 2, 3, 4, 5].map((i) => new TableRow({ children: [svCell(`Sinh viên ${i}: [Họ và tên]`, 6400), svCell("MSSV: [..........]", CW - 6400)] })) });
 
 const P = [];
 P.push(
@@ -87,7 +87,8 @@ P.push(
 // ================= 1
 P.push(h1("1. Khảo sát đối tượng và yêu cầu hệ thống"));
 P.push(h2("1.1. Đối tượng và bài toán"));
-P.push(p("Đối tượng phục vụ là phòng thực hành điện tử với các dụng cụ dùng chung (đồng hồ VOM, mỏ hàn, kìm, nhíp). Quy trình ghi sổ thủ công dẫn tới ba vấn đề kỹ thuật cần giải quyết: (1) không định danh được người đang giữ dụng cụ; (2) không xác minh được dụng cụ trả về có đúng loại và đủ phụ kiện; (3) không có dữ liệu tức thời về tình trạng kho. Người sử dụng hệ thống là sinh viên và người quản lý phòng lab."));
+P.push(p("Đối tượng phục vụ là phòng thực hành điện tử với các dụng cụ cầm tay dùng chung không dùng điện (kìm cắt chân linh kiện, kìm tuốt dây, bộ tua vít, nhíp). Quy trình ghi sổ thủ công dẫn tới ba vấn đề kỹ thuật cần giải quyết: (1) không định danh được người đang giữ dụng cụ; (2) không xác minh được dụng cụ trả về có đúng loại và đủ phụ kiện; (3) không có dữ liệu tức thời về tình trạng kho. Người sử dụng hệ thống là sinh viên và người quản lý phòng lab."));
+P.push(p([B("Phạm vi: "), run("hệ thống chỉ quản lý dụng cụ nguội, không dùng điện. Mỏ hàn bị loại vì ngay sau khi dùng đầu mỏ có nhiệt độ khoảng 300 °C, đặt lên khay sẽ làm chảy lót xốp và vỏ tủ. Thiết bị đo như đồng hồ VOM bị loại vì camera và cân không kiểm tra được chức năng điện bên trong. Với dụng cụ cầm tay, hư hỏng thường gặp là gãy hoặc mất chi tiết, phát hiện được bằng ảnh và khối lượng; các hư hỏng còn lại do người trả báo qua nút báo hỏng (chức năng F8).")]));
 
 P.push(h2("1.2. Sản phẩm tương tự và giải pháp kỹ thuật tham khảo"));
 P.push(tcap("Bảng 1. Các hệ thống quản lý dụng cụ đã có"));
@@ -110,6 +111,8 @@ P.push(...numList([
   "Truyền dữ liệu hai chiều giữa node và gateway, không mất và không trùng sự kiện khi mạng chập chờn.",
   "Xử lý ảnh tại biên (Pi 4), ảnh không rời khỏi mạng nội bộ.",
   "Cung cấp trạng thái tức thời cho ứng dụng web và gửi thông báo ra Internet.",
+  "Ghi nhận tình trạng dụng cụ: người trả báo hỏng tại quầy, dụng cụ bị khóa chờ người quản lý kiểm tra.",
+  "Hoạt động độc lập với hạ tầng mạng của trường: node và gateway dùng mạng Wi-Fi riêng do Pi 4 phát.",
 ]));
 
 // ================= 2
@@ -124,19 +127,20 @@ P.push(table([2100, 2700, 2400, 2200],
     ["F3. Nhận diện dụng cụ", "Camera OV5647 5 MP + Pi 4 (Cortex-A72)", "MIPI CSI-2", "Pi 4 (TFLite INT8)"],
     ["F4. Khóa / mở ngăn", "2 × servo SG90", "PWM 50 Hz (LEDC)", "ESP32-B theo lệnh Pi"],
     ["F5. Báo hiệu tại chỗ", "LCD 16 × 2 HD44780 + PCF8574, còi active, LED đỏ/xanh", "I2C; GPIO", "ESP32-A/B"],
-    ["F6. Truyền dữ liệu node – gateway", "Wi-Fi ESP32 / Pi 4", "802.11n 2,4 GHz, TCP, MQTT 3.1.1", "Mosquitto trên Pi 4"],
+    ["F6. Truyền dữ liệu node – gateway", "Wi-Fi ESP32; Pi 4 phát Wi-Fi (AP)", "802.11n 2,4 GHz, TCP, MQTT 3.1.1", "Mosquitto trên Pi 4"],
     ["F7. Lưu trữ, giao diện, thông báo", "Pi 4 + thẻ nhớ", "SQLite; HTTP/WebSocket; HTTPS", "Backend Python trên Pi 4"],
+    ["F8. Báo hỏng dụng cụ", "Nút nhấn tại quầy; web quản lý", "GPIO ngắt cạnh xuống; MQTT", "Pi 4 khóa dụng cụ, báo Telegram"],
   ]));
 P.push(gap());
 
 P.push(h2("2.2. Yêu cầu kỹ thuật"));
 P.push(
   bl([B("Thu thập dữ liệu: "), run("HX711 chạy 10 SPS (chân RATE = 0) cho nhiễu thấp hơn chế độ 80 SPS; RFID hỏi thẻ chu kì 100 ms; camera chỉ chụp khi cân khay báo có vật.")]),
-  bl([B("Truyền dữ liệu: "), run("MQTT QoS 1 cho mọi sự kiện và lệnh; mã sự kiện eid để loại trùng; retained message cho trạng thái ngăn và trạng thái node; Last Will và keepalive 30 s để phát hiện node mất kết nối.")]),
-  bl([B("Lưu trữ thông tin: "), run("SQLite (chế độ WAL) cho người dùng, dụng cụ, giao dịch, sự kiện đã xử lý; ảnh JPEG khoảng 80 KB/lần trả, giữ 30 ngày; trên ESP32 lưu hệ số hiệu chuẩn cân và bộ đếm eid trong NVS (flash).")]),
+  bl([B("Truyền dữ liệu: "), run("MQTT QoS 1 cho mọi sự kiện và lệnh; mã sự kiện eid để loại trùng; retained message cho trạng thái ngăn và trạng thái node; Last Will và keepalive 30 s để phát hiện node mất kết nối. Mạng: Pi 4 tự phát Wi-Fi 2,4 GHz WPA2-PSK (hostapd, dnsmasq cấp IP, Pi có IP cố định 192.168.4.1) vì Wi-Fi của trường thường yêu cầu đăng nhập qua trang web hoặc dùng WPA2-Enterprise, ESP32 khó kết nối; Internet cho Telegram/Email lấy qua điện thoại chia sẻ mạng qua USB.")]),
+  bl([B("Lưu trữ thông tin: "), run("SQLite (chế độ WAL) cho người dùng, dụng cụ, giao dịch, sự kiện đã xử lý; ảnh JPEG khoảng 80 KB/lần trả, chỉ lưu vùng khay đã cắt (không lưu toàn khung hình để tránh ghi lại mặt người dùng), giữ 30 ngày; trên ESP32 lưu hệ số hiệu chuẩn cân và bộ đếm eid trong NVS (flash).")]),
   bl([B("Xử lý thông tin: "), run("ESP32 chỉ xử lý tín hiệu cấp thấp (lọc cân, đọc cảm biến, phát xung); mọi quyết định nghiệp vụ và suy luận AI tập trung tại Pi 4.")]),
   bl([B("Tối ưu tài nguyên: "), run("lượng tử hóa mô hình INT8; suy luận theo sự kiện; ESP32 dùng bộ đệm tĩnh, không cấp phát động khi chạy; chỉ publish khi khối lượng thay đổi vượt ngưỡng 1 g (deadband); servo mở tuần tự để giới hạn dòng đỉnh.")]),
-  bl([B("Chống nhiễu: "), run("cân: dây ngắn xoắn đôi, lọc trung vị 5 mẫu + trung bình trượt, tự đặt lại điểm 0 khi ngăn trống; servo dùng đường 5 V có tụ 1000 µF, mass chung hình sao; I2C có điện trở kéo lên 4,7 kΩ và mạch chuyển mức 3,3 V ↔ 5 V; ảnh dùng đèn khay cố định và nền một màu.")]),
+  bl([B("Chống nhiễu: "), run("cân: dây ngắn xoắn đôi, lọc trung vị 5 mẫu + trung bình trượt; bù trôi điểm 0: khi ngăn đang khóa, không có giao dịch và khối lượng ổn định, so giá trị đo với tổng khối lượng chuẩn của các dụng cụ đang có trong ngăn để hiệu chỉnh offset (ngăn hầu như không bao giờ trống nên không thể chỉ đặt lại điểm 0 khi trống); chống quá tải: ốc chặn dưới tấm đế cách 1 mm giới hạn độ võng thanh cân khi dụng cụ bị làm rơi; servo dùng đường 5 V có tụ 1000 µF, mass chung hình sao; I2C có điện trở kéo lên 4,7 kΩ và mạch chuyển mức 3,3 V ↔ 5 V; ảnh dùng đèn khay cố định và nền một màu.")]),
 );
 
 P.push(h2("2.3. Thông số kỹ thuật thiết kế (mục tiêu)"));
@@ -144,9 +148,10 @@ P.push(tcap("Bảng 3. Thông số thiết kế – sẽ đo lại khi đánh gi
 P.push(table([3800, 3100, 2500],
   ["Thông số", "Giá trị mục tiêu", "Căn cứ"],
   [
-    ["Số ngăn / số dụng cụ / số lớp nhận diện", "2 ngăn / 4 dụng cụ / 4 lớp", "Mỗi ngăn chứa 2 dụng cụ khác khối lượng"],
-    ["Dải đo khối lượng (khay, mỗi ngăn)", "0 – 1000 g", "VOM khoảng 300–500 g; ngăn chứa VOM + kìm dưới 1 kg"],
+    ["Số ngăn / số dụng cụ / số lớp nhận diện", "2 ngăn / 4 dụng cụ / 5 lớp", "Mỗi ngăn 2 dụng cụ khác khối lượng; lớp thứ 5 là “khay trống / vật lạ”"],
+    ["Dải đo khối lượng (khay, mỗi ngăn)", "0 – 1000 g", "Nặng nhất là bộ tua vít trong hộp, khoảng 200–250 g; mỗi ngăn dưới 500 g"],
     ["Độ phân giải / sai số cân", "≤ 1 g / ≤ ±2 g", "Phân biệt nhíp (khoảng 15–20 g)"],
+    ["Dung sai khối lượng khi trả", "± min(10 g; ½ phụ kiện nhẹ nhất)", "Bộ tua vít thiếu 1 cây (≈ 20 g) → dung sai ±8 g, gấp 4 lần sai số cân"],
     ["Thời gian cân ổn định", "≤ 1 s", "10 SPS, cửa sổ 10 mẫu"],
     ["Độ chính xác nhận diện", "≥ 90 %", "Tập kiểm thử riêng"],
     ["Thời gian suy luận trên Pi 4", "≤ 0,5 s", "Ảnh đầu vào 320 × 320"],
@@ -169,6 +174,8 @@ P.push(table([1700, 3200, 4500],
     ["Hiển thị", "OLED 0,96\" (SSD1306); LCD 16 × 2; LCD 20 × 4", "LCD 16 × 2 qua PCF8574: 2 dòng đủ hiện tên người dùng và một thông báo ngắn (dụng cụ, lý do từ chối), chỉ tốn 2 chân I2C, rẻ hơn LCD 20 × 4 khoảng 40 %; chi tiết (hạn trả, lịch sử) xem trên web"],
     ["Báo ngăn", "LED RGB WS2812; LED đơn đỏ/xanh", "LED đơn: mỗi ngăn 1 đỏ (khóa) + 1 xanh (mở) điều khiển trực tiếp bằng GPIO qua điện trở 330 Ω, không cần IC chuyển mức như WS2812; với 2 ngăn chỉ tốn 4 chân"],
     ["Cơ cấu khóa", "Servo SG90; solenoid 12 V", "SG90: điều khiển trực tiếp bằng PWM, dùng chung nguồn 5 V; bản thực tế dùng solenoid + MOSFET"],
+    ["Mạng", "Wi-Fi của trường; router riêng; Pi 4 phát Wi-Fi (AP)", "Pi 4 làm AP: không phụ thuộc mạng trường, không tốn tiền router, IP broker cố định; Pi 4 vẫn ra Internet qua điện thoại chia sẻ mạng qua USB"],
+    ["Nhận diện vật lạ", "4 lớp dụng cụ; thêm lớp “khay trống / vật lạ”", "Bộ phân lớp softmax luôn chọn một trong các lớp đã học, nên vật lạ (điện thoại, ví) vẫn có thể bị gán nhãn dụng cụ với độ tin cậy cao. Thêm lớp thứ 5 huấn luyện bằng ảnh khay trống và đồ vật thường gặp"],
     ["Xử lý trung tâm", "Pi 3B+ (1 GB); Pi 4 (4 GB)", "Pi 4: 4 nhân Cortex-A72, 4 GB RAM, đủ chạy đồng thời broker, backend, CSDL và mô hình AI"],
   ]));
 P.push(gap());
@@ -178,6 +185,14 @@ P.push(h1("3. Sơ đồ khối"));
 P.push(p("Hệ thống tổ chức theo ba tầng kiến trúc IoT (Hình 1) và gồm 10 khối phần cứng (Hình 2): nguồn; xử lý trung tâm + truyền thông (Pi 4); thu ảnh; ứng dụng; hai khối điều khiển node (ESP32-A, ESP32-B); nhận dạng; cân khay; hiển thị & báo; đo khối lượng ngăn; chấp hành; báo ngăn."));
 P.push(...img("kientruc2.png", 560, 357, "Hình 1. Kiến trúc hệ thống ba tầng"));
 P.push(...img("khoi_phancung.png", 600, 362, "Hình 2. Sơ đồ khối phần cứng"));
+P.push(p([B("Bố trí vật lý và vị trí camera. "), run("Quầy trả (Node A) và tủ 2 ngăn (Node B) được ghép thành một khối: khay trả đặt sát mặt trước tủ. Raspberry Pi 4, camera và đèn khay gắn trên một tay đỡ bắt vào thân tủ, camera hướng thẳng xuống khay ở độ cao cố định. Toàn hệ thống chỉ dùng một camera, nối vào cổng CSI duy nhất của Pi 4; do Pi đặt ngay cạnh camera nên dùng được cáp CSI ngắn đi kèm. Việc chụp ảnh không cần người dùng bấm nút: load cell dưới khay là tín hiệu kích hoạt, khi khối lượng trên khay vượt 5 g và ổn định thì Pi 4 tự bật đèn, chụp và suy luận.")]));
+P.push(p("Camera đặt tại khay trả thay vì bên trong từng ngăn vì ba lý do:"));
+P.push(
+  bl([B("Kiểm tra trước khi cất: "), run("dụng cụ được xác minh khi còn trên khay, trả sai thì ngăn không mở. Camera trong ngăn chỉ phát hiện được sau khi dụng cụ đã vào tủ.")]),
+  bl([B("Một camera cho mọi ngăn: "), run("Pi 4 chỉ có một cổng CSI; đặt camera trong từng ngăn cần thêm camera USB và tăng chi phí theo số ngăn.")]),
+  bl([B("Điều kiện chụp ổn định: "), run("trên khay có đèn cố định, nền xốp một màu, dụng cụ nằm phẳng không bị che; trong ngăn kín ánh sáng thay đổi khi đóng mở nắp và các dụng cụ dễ che khuất nhau.")]),
+);
+P.push(p([B("Dùng hai ESP32 dù quầy và tủ ghép chung một khối. "), run("Về số chân, một ESP32 đủ cho cả hai phần (Node A dùng 12 chân, Node B dùng 10 chân, tổng 22 chân vẫn nằm trong số GPIO dùng được của ESP32 DevKit 30 chân). Tách làm hai node vì tủ là module mở rộng: thêm tủ chỉ cần thêm một Node B với firmware giống hệt (chỉ đổi tên node trong topic), không phải sửa Node A hay backend. Đây cũng là lý do dùng MQTT theo mô hình publish/subscribe thay vì nối trực tiếp.")]));
 
 // ================= 4
 P.push(h1("4. Sơ đồ nguyên lý (sơ bộ)"));
@@ -190,6 +205,7 @@ P.push(table([2900, 2700, 3800],
     ["LCD 16 × 2 + PCF8574 (I2C)", "SDA 21, SCL 22", "5 V, qua mạch chuyển mức BSS138"],
     ["HX711 khay", "DOUT 34, SCK 32", "Cấp 3,3 V; load cell 1 kg dưới khay"],
     ["Còi active 5 V", "GPIO 25", "Transistor S8050, điện trở nền 1 kΩ; chỉ bật/tắt (còi có mạch dao động sẵn)"],
+    ["Nút báo hỏng", "GPIO 33", "Kéo lên nội; ngắt cạnh xuống, chống dội 50 ms bằng phần mềm"],
     ["Đèn khay (6 LED trắng 5 mm, 5 V)", "GPIO 26", "MOSFET IRLZ44N, điện trở cổng 330 Ω, kéo xuống 10 kΩ; mỗi LED nối tiếp 100 Ω (≈ 19 mA)"],
   ]));
 P.push(gap());
@@ -239,6 +255,7 @@ P.push(table([2500, 1100, 1200, 4600],
   [
     ["lab/kioskA/card", "A → Pi", "1 / không", "{\"eid\":\"A-1024\",\"uid\":\"04A1B2C3\"}"],
     ["lab/kioskA/tray", "A → Pi", "1 / không", "{\"eid\":\"A-1025\",\"m\":352.4,\"stable\":true}"],
+    ["lab/kioskA/button", "A → Pi", "1 / không", "{\"eid\":\"A-1026\",\"btn\":\"fault\"}"],
     ["lab/kioskA/cmd", "Pi → A", "1 / không", "{\"cid\":\"C-88\",\"lcd\":[\"Dat dung cu\",\"len khay\"],\"lamp\":1}"],
     ["lab/cabB/cmd", "Pi → B", "1 / không", "{\"cid\":\"C-89\",\"slot\":2,\"action\":\"unlock\"}"],
     ["lab/cabB/ack", "B → Pi", "1 / không", "{\"cid\":\"C-89\",\"ok\":true}"],
@@ -264,7 +281,7 @@ P.push(...numList([
   "ESP32-B đưa lệnh vào hàng đợi; tác vụ chấp hành đổi độ rộng xung kênh LEDC k (50 Hz) từ khoảng 1 ms sang khoảng 2 ms để servo quay mở chốt; ghi mức GPIO để tắt LED đỏ, bật LED xanh của ngăn k; publish ack.",
   "Tác vụ cân chờ chân DOUT của HX711 xuống mức thấp (có mẫu mới, 10 SPS), phát 25 xung SCK để đọc 24 bit bù 2 kênh A, gain 128. Ngắt được tạm khóa trong lúc phát xung vì xung SCK ở mức cao quá 60 µs sẽ đưa HX711 vào chế độ nghỉ.",
   "Khối lượng m = (giá trị thô − offset) / hệ số hiệu chuẩn; lọc trung vị 5 mẫu và trung bình trượt; coi là ổn định khi dao động dưới 1 g trong 1 s.",
-  "Khi m giảm xấp xỉ khối lượng chuẩn của dụng cụ (±10 %), ESP32-B publish (hai dụng cụ trong cùng ngăn có khối lượng khác nhau nên lượng giảm cho biết món nào được lấy) lab/cabB/slot/k/state (retained). Backend ghi giao dịch “đang mượn” vào SQLite, gửi lệnh lock (servo về 1 ms), đẩy cập nhật lên web qua WebSocket. Nếu sau 30 s không có thay đổi khối lượng, ngăn được khóa lại và lệnh mượn bị hủy.",
+  "Khi m giảm đúng khối lượng chuẩn của dụng cụ (trong dung sai ở Bảng 3), ESP32-B publish (hai dụng cụ trong cùng ngăn có khối lượng khác nhau nên lượng giảm cho biết món nào được lấy) lab/cabB/slot/k/state (retained). Backend ghi giao dịch “đang mượn” vào SQLite, gửi lệnh lock (servo về 1 ms), đẩy cập nhật lên web qua WebSocket. Nếu sau 30 s không có thay đổi khối lượng, ngăn được khóa lại và lệnh mượn bị hủy.",
 ]));
 
 P.push(h2("5.5. Luồng tín hiệu khi trả và xử lý Edge AI"));
@@ -273,9 +290,10 @@ P.push(...img("seq_tra.png", 620, 344, "Hình 3. Sơ đồ tuần tự luồng t
 P.push(...numList([
   [B("Phát hiện vật trên khay: "), run("tác vụ cân khay trên ESP32-A đọc HX711 (25 xung SCK, 24 bit), lọc như mục 5.4; khi khối lượng > 5 g và dao động dưới 1 g trong 1 s thì publish lab/kioskA/tray {m, stable} QoS 1. Ngưỡng 5 g loại các rung động khi chạm tay vào khay.")],
   [B("Thu ảnh: "), run("backend gửi lệnh bật đèn khay (ESP32-A → GPIO 26 → MOSFET), dùng Picamera2 (libcamera) chụp một khung 640 × 480 qua MIPI CSI-2.")],
-  [B("Suy luận: "), run("cắt vùng khay, đổi kích thước về 320 × 320, chuẩn hóa; tflite-runtime (bộ tăng tốc XNNPACK, 4 nhân Cortex-A72) chạy mô hình INT8, xuất vectơ xác suất 4 lớp (VOM, mỏ hàn, kìm, nhíp); lấy lớp có xác suất lớn nhất và độ tin cậy. Ảnh được lưu JPEG kèm eid.")],
-  [B("Quyết định: "), run("chỉ mở ngăn khi đồng thời: lớp nhận diện trùng dụng cụ người đó đang mượn, độ tin cậy ≥ 0,8, m khớp khối lượng chuẩn ±10 %. Không đạt: gửi lệnh LCD nêu lý do và bật còi.")],
-  [B("Cất vào ngăn: "), run("thực hiện như bước mở ngăn ở mục 5.4; khi HX711 ngăn k báo khối lượng tăng đúng khối lượng chuẩn thì backend đóng giao dịch, khóa ngăn, cập nhật web. Nếu khối lượng thiếu (ví dụ VOM thiếu que đo), giao dịch được đánh dấu “thiếu phụ kiện” và báo người quản lý.")],
+  [B("Suy luận: "), run("cắt vùng khay, đổi kích thước về 320 × 320, chuẩn hóa; tflite-runtime (bộ tăng tốc XNNPACK, 4 nhân Cortex-A72) chạy mô hình INT8, xuất vectơ xác suất 5 lớp (kìm cắt, kìm tuốt dây, bộ tua vít, nhíp, khay trống / vật lạ); lấy lớp có xác suất lớn nhất và độ tin cậy. Ảnh được lưu JPEG kèm eid.")],
+  [B("Quyết định: "), run("chỉ mở ngăn khi đồng thời: lớp nhận diện trùng dụng cụ người đó đang mượn, độ tin cậy ≥ 0,8, m khớp khối lượng chuẩn trong dung sai riêng của dụng cụ (Bảng 3). Lớp “khay trống / vật lạ” hoặc không đạt bất kỳ điều kiện nào: gửi lệnh LCD nêu lý do và bật còi, ngăn không mở.")],
+  [B("Cất vào ngăn: "), run("thực hiện như bước mở ngăn ở mục 5.4; khi HX711 ngăn k báo khối lượng tăng đúng khối lượng chuẩn thì backend đóng giao dịch, khóa ngăn, cập nhật web. Nếu khối lượng thiếu (ví dụ bộ tua vít thiếu 1 cây), giao dịch được đánh dấu “thiếu phụ kiện” và báo người quản lý.")],
+  [B("Báo hỏng: "), run("trong lúc dụng cụ còn trên khay, nếu sinh viên nhấn nút báo hỏng, ngắt cạnh xuống trên GPIO 33 được chống dội 50 ms rồi ESP32-A publish lab/kioskA/button {btn: fault}. Backend vẫn nhận trả và cất dụng cụ vào ngăn nhưng đặt trạng thái “chờ kiểm tra”: dụng cụ không xuất hiện trong danh sách cho mượn và người quản lý nhận tin Telegram (chỉ gửi văn bản, ảnh xem trên web quản lý để ảnh không rời mạng nội bộ). Sau khi kiểm tra, người quản lý đổi lại trạng thái trên web.")],
 ]));
 
 P.push(h2("5.6. Luồng thông báo và giao diện"));
@@ -306,6 +324,8 @@ P.push(
   bl("QoS 1 có thể giao một bản tin nhiều lần; backend lưu eid/cid đã xử lý để không ghi trùng giao dịch hay mở ngăn hai lần."),
   bl("Khi node ở trạng thái offline, backend không phát lệnh mở ngăn và hiển thị “Mất kết nối” trên web; ESP32 tự kết nối lại Wi-Fi/MQTT với thời gian chờ tăng dần."),
   bl("Backend khởi động lại (systemd) sẽ đọc lại trạng thái từ SQLite và các bản tin retained, nên không mất trạng thái ngăn."),
+  bl("ESP32-B khởi động lại: ngay đầu chương trình, trước khi kết nối Wi-Fi, firmware cấu hình LEDC và đưa cả 2 servo về vị trí khóa, bật LED đỏ (giảm giật servo khi vừa cấp nguồn). Sau khi kết nối MQTT, node publish lại trạng thái thật của từng ngăn để ghi đè bản tin retained cũ có thể vẫn ghi “open” từ trước khi lỗi."),
+  bl("Mất Internet: chỉ Telegram và Email bị ảnh hưởng (bản tin xếp hàng gửi lại sau); mượn – trả vẫn hoạt động vì toàn bộ xử lý nằm trong mạng do Pi 4 phát."),
 );
 
 // ================= 6
@@ -319,7 +339,10 @@ P.push(table([3200, 3800, 2400],
     ["Thời gian suy luận", "Đo 100 lần trên Pi 4", "Trung bình ≤ 0,5 s"],
     ["Độ trễ đầu – cuối", "Ghi mốc thời gian ở từng bước của Bảng 10", "≤ 2 s / ≤ 3 s"],
     ["Phân biệt vật cùng khối lượng", "Hai dụng cụ chênh nhau < 10 g, đổi chỗ khi trả", "AI nhận đúng loại"],
-    ["Trả sai / thiếu phụ kiện", "Trả nhầm món, VOM thiếu que đo", "100 % bị từ chối"],
+    ["Trả sai / thiếu phụ kiện", "Trả nhầm món; bộ tua vít thiếu 1 cây", "100 % bị từ chối"],
+    ["Vật lạ trên khay", "Đặt điện thoại, ví, chìa khóa", "100 % bị từ chối"],
+    ["Báo hỏng", "Nhấn nút khi trả", "Dụng cụ chuyển “chờ kiểm tra”, không cho mượn, quản lý nhận Telegram"],
+    ["Khởi động lại node", "Ngắt nguồn ESP32-B khi ngăn đang mở", "Ngăn tự khóa; trạng thái trên web đúng sau khi node kết nối lại"],
     ["Mất kết nối, bản tin trùng", "Ngắt Wi-Fi node, khởi động lại Pi, gửi lặp eid", "Không mở sai, không ghi trùng"],
   ]));
 P.push(gap());
@@ -381,14 +404,14 @@ P.push(tcap("Bảng 13. Danh sách linh kiện chi tiết"));
   P.push(new Table({ width: { size: W.reduce((a, b) => a + b, 0), type: WidthType.DXA }, columnWidths: W, alignment: AlignmentType.CENTER, rows }));
   console.log("total", total, "need", need, "items", n);
 }
-P.push(p([I("Dụng cụ dùng để thử (VOM, mỏ hàn, kìm, nhíp) lấy từ phòng lab, không tính vào chi phí. File Excel đi kèm (DanhSachLinhKien.xlsx) tự tính lại số tiền cần mua khi nhập số lượng đã có.")], { spacing: { before: 60, after: 80 } }));
+P.push(p([I("Dụng cụ dùng để thử (kìm cắt, kìm tuốt dây, bộ tua vít, nhíp) lấy từ phòng lab, không tính vào chi phí. File Excel đi kèm (DanhSachLinhKien.xlsx) tự tính lại số tiền cần mua khi nhập số lượng đã có.")], { spacing: { before: 60, after: 80 } }));
 
 // ================= 8
 P.push(h1("8. Kế hoạch thực hiện (6 tuần)"));
 P.push(table([1300, 8100],
   ["Tuần", "Nội dung"],
   [
-    ["1", "Chốt yêu cầu và thông số; vẽ sơ đồ nguyên lý và bố trí mạch trên KiCad; đặt mua linh kiện."],
+    ["1", "Đặt mua linh kiện ngay ngày đầu (giao hàng 3–7 ngày); chốt đặc tả MQTT; cài Pi 4 và mạng Wi-Fi riêng; vẽ sơ đồ nguyên lý và bố trí mạch trên KiCad; trong lúc chờ hàng, chụp thử ảnh dụng cụ trên nền và đèn giống khay."],
     ["2", "Hàn mạch Node A, Node B trên PCB đục lỗ; lập trình ESP32-A, ESP32-B (đọc cảm biến, PWM, GPIO); cài Mosquitto trên Pi 4."],
     ["3", "Thu thập ảnh, huấn luyện, lượng tử hóa và chạy mô hình trên Pi 4; backend và CSDL."],
     ["4", "Ghép luồng mượn – trả theo Bảng 9; web và WebSocket; thông báo Telegram."],
@@ -401,10 +424,10 @@ P.push(table([1500, 2700, 5200],
   ["Thành viên", "Mảng phụ trách", "Phạm vi"],
   [
     ["TV1 (nhóm trưởng)", "Tích hợp hệ thống, MQTT, báo cáo", "Đặc tả bản tin MQTT, repo GitHub, mua linh kiện, thử thẻ sinh viên với RC522, ghép và kiểm thử đầu – cuối, kiểm thử lỗi truyền thông, đo bộ nhớ ESP32, báo cáo, slide"],
-    ["TV2", "Node A (kiosk + khay trả)", "Sơ đồ nguyên lý và bố trí mạch KiCad, hàn mạch, firmware ESP32-A (RFID, LCD, cân khay, còi, đèn, MQTT), OTA"],
+    ["TV2", "Node A (kiosk + khay trả)", "Sơ đồ nguyên lý và bố trí mạch KiCad, hàn mạch, firmware ESP32-A (RFID, LCD, cân khay, còi, đèn, nút báo hỏng, MQTT), OTA"],
     ["TV3", "Node B (tủ 2 ngăn) + cơ khí", "Sơ đồ nguyên lý và bố trí mạch KiCad, hàn mạch, firmware ESP32-B (2 cân, servo, LED, MQTT), gia công khay, ngăn, giá camera"],
     ["TV4", "Edge AI", "Camera và chiếu sáng, thu thập và gán nhãn ảnh, huấn luyện, lượng tử hóa INT8, dịch vụ suy luận trên Pi 4, đánh giá mô hình, đo công suất, video demo"],
-    ["TV5", "Backend, CSDL, web", "Mosquitto, FastAPI, SQLite, luật nghiệp vụ mượn – trả, web sinh viên và quản lý, WebSocket, Telegram/Email, README"],
+    ["TV5", "Backend, CSDL, web", "Mạng Wi-Fi do Pi 4 phát, Mosquitto, FastAPI, SQLite, luật nghiệp vụ mượn – trả, web sinh viên và quản lý, WebSocket, Telegram/Email, README"],
   ]));
 
 // ================= refs

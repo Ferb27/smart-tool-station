@@ -2,12 +2,12 @@
 
 Đồ án môn **Kiến trúc và giao thức IoT** (lý thuyết + thực tập).
 
-Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mượn dụng cụ (VOM, mỏ hàn, kìm, nhíp). Khi trả, hệ thống kiểm tra cùng lúc hai điều kiện:
+Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mượn dụng cụ cầm tay không dùng điện (kìm cắt, kìm tuốt dây, bộ tua vít, nhíp). Khi trả, hệ thống kiểm tra cùng lúc hai điều kiện:
 
 - **đúng loại dụng cụ**: camera và mô hình AI chạy ngay trên Raspberry Pi 4;
 - **đủ phụ kiện**: cân bằng load cell.
 
-Đạt cả hai thì ngăn tủ tự mở để cất dụng cụ vào.
+Đạt cả hai thì ngăn tủ tự mở để cất dụng cụ vào. Dụng cụ có vấn đề thì người trả nhấn nút báo hỏng, dụng cụ bị khóa chờ người quản lý kiểm tra.
 
 ![Kiến trúc hệ thống](docs/images/kientruc2.png)
 
@@ -16,10 +16,10 @@ Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mư�
 | Khối | Phần cứng | Vai trò |
 |---|---|---|
 | Gateway / Edge AI | Raspberry Pi 4 (4 GB) + camera OV5647 | Mosquitto (MQTT broker), backend FastAPI + SQLite, suy luận TFLite INT8, web, Telegram/Email |
-| Node A – kiosk + khay trả | ESP32 + RC522 + LCD 16×2 I2C + load cell/HX711 + còi + đèn khay | Định danh thẻ, cân dụng cụ trả, hiển thị |
+| Node A – kiosk + khay trả | ESP32 + RC522 + LCD 16×2 I2C + load cell/HX711 + còi + đèn khay + nút báo hỏng | Định danh thẻ, cân dụng cụ trả, hiển thị, báo hỏng |
 | Node B – tủ 2 ngăn | ESP32 + 2 load cell/HX711 + 2 servo SG90 + LED đỏ/xanh | Cân từng ngăn, khóa/mở ngăn |
 
-Node và gateway giao tiếp qua Wi-Fi bằng MQTT 3.1.1 (QoS 1, retained, Last Will). Đặc tả bản tin: [docs/mqtt_spec.md](docs/mqtt_spec.md).
+Node và gateway giao tiếp qua mạng Wi-Fi riêng do Pi 4 phát (không phụ thuộc Wi-Fi trường), dùng MQTT 3.1.1 (QoS 1, retained, Last Will). Đặc tả bản tin: [docs/mqtt_spec.md](docs/mqtt_spec.md).
 
 ## Cấu trúc thư mục
 

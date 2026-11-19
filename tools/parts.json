@@ -111,6 +111,13 @@
     6000,
     "Đèn khay; mỗi LED nối tiếp 100 Ω từ 5 V (≈ 19 mA)",
     0
+   ],
+   [
+    "Nút nhấn 12 mm (nút báo hỏng)",
+    1,
+    3000,
+    "Gắn trên quầy, nối GPIO 33, dùng kéo lên nội",
+    0
    ]
   ]
  },
@@ -257,7 +264,7 @@
     "Ốc vít M3 (mạch) + ốc M4/M5 (load cell) + long đen, trụ đồng",
     1,
     25000,
-    "Kiểm tra cỡ lỗ ren của load cell khi nhận hàng; long đen làm đệm để thanh cân có khe uốn",
+    "Kiểm tra cỡ lỗ ren của load cell khi nhận hàng; long đen làm đệm để thanh cân có khe uốn; thêm 1 ốc chặn quá tải dưới mỗi tấm đế (cách 1 mm)",
     0
    ]
   ]

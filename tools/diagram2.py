@@ -59,7 +59,7 @@ arrow(7.9, 2.8, 7.9, 3.35, "Wi-Fi / MQTT", both=True)
 
 # Peripherals
 box(3.15, 0.1, 2.9, 1.4,
-    "RFID RC522 (SPI)\nLCD 16x2 (I2C)\nLoad cell khay + HX711\nBuzzer (PWM) · Đèn khay (GPIO)", fs=8.8)
+    "RFID RC522 (SPI)\nLCD 16x2 (I2C)\nLoad cell khay + HX711\nCòi · Đèn khay · Nút báo hỏng (GPIO)", fs=8.6)
 box(6.4, 0.1, 3.0, 1.4,
     "2 × Load cell + HX711\n2 × Servo khóa ngăn (PWM)\nLED đỏ/xanh báo ngăn\n(GPIO)", fs=8.8)
 arrow(4.6, 1.5, 4.6, 1.95, both=True)
