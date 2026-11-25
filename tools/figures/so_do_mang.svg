@@ -1,36 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
-<defs><marker id="ah_e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker><marker id="ah_s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker></defs>
 <rect width="1200" height="800" fill="#FFFFFF"/>
 <rect x="24" y="26" width="270" height="128" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="159" y="58" font-family="'Times New Roman', Times, serif" font-size="24" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node A</text>
 <text x="159" y="86" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Kiosk + khay trả</text>
 <text x="159" y="114" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">192.168.4.11</text>
 <text x="159" y="142" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MQTT :1883 · OTA :8000</text>
-<line x1="159" y1="154" x2="159" y2="196" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="159.00" y1="154.00" x2="159.00" y2="196.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
 <rect x="314" y="26" width="270" height="128" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="449" y="58" font-family="'Times New Roman', Times, serif" font-size="24" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node B</text>
 <text x="449" y="86" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Tủ 2 ngăn + hộc pin</text>
 <text x="449" y="114" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">192.168.4.12</text>
 <text x="449" y="142" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MQTT :1883 · OTA :8000</text>
-<line x1="449" y1="154" x2="449" y2="196" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="449.00" y1="154.00" x2="449.00" y2="196.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
 <rect x="604" y="26" width="270" height="128" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="739" y="58" font-family="'Times New Roman', Times, serif" font-size="24" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Điện thoại sinh viên</text>
 <text x="739" y="86" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Trình duyệt, quét mã QR</text>
 <text x="739" y="114" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">DHCP 192.168.4.10–.50</text>
 <text x="739" y="142" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">HTTP/WS :8000 · DNS :53</text>
-<line x1="739" y1="154" x2="739" y2="196" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="739.00" y1="154.00" x2="739.00" y2="196.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
 <rect x="894" y="26" width="270" height="128" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="1029" y="58" font-family="'Times New Roman', Times, serif" font-size="24" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Laptop quản lý</text>
 <text x="1029" y="86" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Trình duyệt, SSH</text>
 <text x="1029" y="114" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">DHCP 192.168.4.10–.50</text>
 <text x="1029" y="142" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">HTTP/WS :8000 · SSH :22</text>
-<line x1="1029" y1="154" x2="1029" y2="196" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
-<line x1="159" y1="196" x2="1029" y2="196" stroke="#111111" stroke-width="2.4" stroke-dasharray="7 5"/>
+<line x1="1029.00" y1="154.00" x2="1029.00" y2="196.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="159.00" y1="196.00" x2="1029.00" y2="196.00" stroke="#111111" stroke-width="2.4" stroke-dasharray="7 5"/>
 <text x="478" y="226" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">WLAN «TramDungCu» · IEEE 802.11n 2,4 GHz · WPA2-PSK · kênh 6 · 192.168.4.0/24</text>
 <rect x="24" y="262" width="856" height="400" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="2.6"/>
 <text x="452.0" y="295" font-family="'Times New Roman', Times, serif" font-size="23" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Raspberry Pi 4 Model B (4 GB) — gateway, điểm truy cập, máy chủ ứng dụng</text>
-<line x1="24" y1="310" x2="880" y2="310" stroke="#111111" stroke-width="1.2"/>
-<line x1="452" y1="196" x2="452" y2="262" stroke="#111111" stroke-width="2.2" stroke-dasharray="7 5"/>
+<line x1="24.00" y1="310.00" x2="880.00" y2="310.00" stroke="#111111" stroke-width="1.2"/>
+<line x1="452.00" y1="196.00" x2="452.00" y2="262.00" stroke="#111111" stroke-width="2.2" stroke-dasharray="7 5"/>
 <rect x="446.5" y="256.5" width="11" height="11" fill="#111111"/>
 <text x="440" y="250" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="normal" font-style="normal" text-anchor="end" fill="#111111">wlan0 · 192.168.4.1</text>
 <rect x="44" y="318" width="244" height="68" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
@@ -60,11 +59,19 @@
 <rect x="604" y="502" width="244" height="68" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
 <text x="726.0" y="529" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Ảnh JPEG</text>
 <text x="726.0" y="555" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">giữ 30 ngày</text>
-<line x1="288" y1="444" x2="324" y2="444" stroke="#111111" stroke-width="1.8" marker-start="url(#ah_s)" marker-end="url(#ah_e)"/>
-<line x1="568" y1="444" x2="604" y2="444" stroke="#111111" stroke-width="1.8" marker-start="url(#ah_s)" marker-end="url(#ah_e)"/>
-<line x1="446.0" y1="478" x2="446.0" y2="502" stroke="#111111" stroke-width="1.8" marker-start="url(#ah_s)" marker-end="url(#ah_e)"/>
-<line x1="726.0" y1="478" x2="726.0" y2="502" stroke="#111111" stroke-width="1.8" marker-end="url(#ah_e)"/>
-<line x1="288" y1="536" x2="324" y2="536" stroke="#111111" stroke-width="1.8" marker-end="url(#ah_e)"/>
+<line x1="300.00" y1="444.00" x2="312.00" y2="444.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="324.00,444.00 311.00,449.50 311.00,438.50" fill="#111111"/>
+<polygon points="288.00,444.00 301.00,438.50 301.00,449.50" fill="#111111"/>
+<line x1="580.00" y1="444.00" x2="592.00" y2="444.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="604.00,444.00 591.00,449.50 591.00,438.50" fill="#111111"/>
+<polygon points="568.00,444.00 581.00,438.50 581.00,449.50" fill="#111111"/>
+<line x1="446.00" y1="490.00" x2="446.00" y2="490.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="446.00,502.00 440.50,489.00 451.50,489.00" fill="#111111"/>
+<polygon points="446.00,478.00 451.50,491.00 440.50,491.00" fill="#111111"/>
+<line x1="726.00" y1="478.00" x2="726.00" y2="490.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="726.00,502.00 720.50,489.00 731.50,489.00" fill="#111111"/>
+<line x1="288.00" y1="536.00" x2="312.00" y2="536.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="324.00,536.00 311.00,541.50 311.00,530.50" fill="#111111"/>
 <rect x="44" y="586" width="804" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="446" y="612" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Raspberry Pi OS 64-bit · systemd (Restart=always) · ufw (22, 53, 67, 1883, 8000)</text>
 <text x="446" y="638" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">SSH khóa công khai · bí mật đặt trong /etc/tram/env (chmod 600)</text>
@@ -72,10 +79,12 @@
 <text x="1053" y="326" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Điện thoại chia sẻ mạng</text>
 <text x="1053" y="351" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">USB tethering (usb0)</text>
 <text x="1053" y="376" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">hoặc cáp mạng eth0</text>
-<line x1="880" y1="340" x2="930" y2="340" stroke="#111111" stroke-width="2.2"/>
+<line x1="880.00" y1="340.00" x2="930.00" y2="340.00" stroke="#111111" stroke-width="2.2"/>
 <rect x="874.5" y="334.5" width="11" height="11" fill="#111111"/>
 <text x="905" y="328" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">usb0</text>
-<line x1="1053" y1="394" x2="1053" y2="462" stroke="#111111" stroke-width="2.0" stroke-dasharray="14 4 3 4" marker-start="url(#ah_s)" marker-end="url(#ah_e)"/>
+<line x1="1053.00" y1="406.00" x2="1053.00" y2="450.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="14 4 3 4"/>
+<polygon points="1053.00,462.00 1047.50,449.00 1058.50,449.00" fill="#111111"/>
+<polygon points="1053.00,394.00 1058.50,407.00 1047.50,407.00" fill="#111111"/>
 <text x="1068" y="434" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">4G / LTE</text>
 <rect x="930" y="462" width="246" height="124" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6" stroke-dasharray="9 6"/>
 <text x="1053" y="492" font-family="'Times New Roman', Times, serif" font-size="22" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Internet</text>
@@ -85,22 +94,23 @@
 <rect x="110" y="706" width="300" height="80" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="260" y="736" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Camera OV5647 (5 MP)</text>
 <text x="260" y="762" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MIPI CSI-2</text>
-<line x1="260" y1="706" x2="260" y2="662" stroke="#111111" stroke-width="2.2"/>
+<line x1="260.00" y1="706.00" x2="260.00" y2="662.00" stroke="#111111" stroke-width="2.2"/>
 <rect x="254.5" y="656.5" width="11" height="11" fill="#111111"/>
 <text x="274" y="690" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">CSI-2</text>
 <rect x="500" y="706" width="330" height="80" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
 <text x="665" y="736" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">USB flash (sao lưu)</text>
 <text x="665" y="762" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">02:00 hằng ngày · giữ 7 bản</text>
-<line x1="665" y1="662" x2="665" y2="706" stroke="#111111" stroke-width="2.2" marker-end="url(#ah_e)"/>
+<line x1="665.00" y1="662.00" x2="665.00" y2="694.00" stroke="#111111" stroke-width="2.2"/>
+<polygon points="665.00,706.00 659.50,693.00 670.50,693.00" fill="#111111"/>
 <rect x="659.5" y="656.5" width="11" height="11" fill="#111111"/>
 <text x="679" y="690" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">USB-A · sqlite3 .backup</text>
 <rect x="930" y="618" width="246" height="170" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.2"/>
 <text x="1053" y="644" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Chú giải</text>
-<line x1="944" y1="668" x2="994" y2="668" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="944.00" y1="668.00" x2="994.00" y2="668.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 5"/>
 <text x="1004" y="674" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Không dây 802.11n</text>
-<line x1="944" y1="696" x2="994" y2="696" stroke="#111111" stroke-width="1.8"/>
+<line x1="944.00" y1="696.00" x2="994.00" y2="696.00" stroke="#111111" stroke-width="1.8"/>
 <text x="1004" y="702" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Có dây / cục bộ</text>
-<line x1="944" y1="724" x2="994" y2="724" stroke="#111111" stroke-width="1.8" stroke-dasharray="14 4 3 4"/>
+<line x1="944.00" y1="724.00" x2="994.00" y2="724.00" stroke="#111111" stroke-width="1.8" stroke-dasharray="14 4 3 4"/>
 <text x="1004" y="730" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Mạng di động 4G</text>
 <rect x="944" y="744" width="24" height="15" rx="1" fill="#EDEDED" stroke="#111111" stroke-width="1.2"/>
 <text x="976" y="757" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Thiết bị ngoài</text>

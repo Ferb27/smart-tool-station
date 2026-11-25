@@ -1,66 +1,16 @@
-# Sinh file SVG "so_do_mang.svg" rồi nhờ Inkscape xuất PNG/PDF.
-# Chạy:  python so_do_mang.py   (cần Inkscape; sửa đường dẫn INKSCAPE bên dưới nếu khác)
+# Sơ đồ mạng và kết nối dịch vụ (Hình 9). Chạy: python so_do_mang.py (cần Inkscape, xem svgkit.py)
 # Quy ước hình: nét đen đơn sắc, 3 kiểu nét (không dây / có dây / 4G), 2 kiểu nền (xám / trắng),
 # cỡ chữ tối thiểu 18 px trên khung 1200 px để khi thu về bề rộng trang A4 vẫn đọc được (khoảng 8 pt).
-import os
-import subprocess
+from svgkit import Fig, GREY
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SVG = os.path.join(HERE, "so_do_mang.svg")
-PNG = os.path.join(HERE, "..", "..", "docs", "images", "so_do_mang.png")
-PDF = os.path.join(HERE, "..", "..", "docs", "images", "so_do_mang.pdf")
-INKSCAPE = r"D:\tool\Inkscape\bin\inkscape.com"
-
-W, H = 1200, 800
-SERIF = "'Times New Roman', Times, serif"
-MONO = "Consolas, 'Courier New', monospace"
-INK = "#111111"
-GREY = "#EDEDED"
-
-out = []
-
-
-def add(s):
-    out.append(s)
-
-
-def rect(x, y, w, h, fill="#FFFFFF", sw=1.6, dash=None, rx=2):
-    d = ' stroke-dasharray="%s"' % dash if dash else ""
-    add('<rect x="%s" y="%s" width="%s" height="%s" rx="%s" fill="%s" stroke="%s" stroke-width="%s"%s/>'
-        % (x, y, w, h, rx, fill, INK, sw, d))
+f = Fig("so_do_mang", 1200, 800)
+BUS_Y = 196
+rect, line, square, lines = f.rect, f.line, f.square, f.lines
 
 
 def text(x, y, s, size=20, anchor="start", weight="normal", mono=False, style="normal"):
-    fam = MONO if mono else SERIF
-    add('<text x="%s" y="%s" font-family="%s" font-size="%s" font-weight="%s" font-style="%s" '
-        'text-anchor="%s" fill="%s">%s</text>' % (x, y, fam, size, weight, style, anchor, INK, s))
+    f.text(x, y, s, size, anchor, weight == "bold", mono, style == "italic")
 
-
-def lines(x, y, items, step=25):
-    """items: danh sách (chuỗi, cỡ chữ, đậm?, mono?), căn giữa quanh x"""
-    for i, (s, size, bold, mono) in enumerate(items):
-        text(x, y + i * step, s, size, "middle", "bold" if bold else "normal", mono)
-
-
-def line(x1, y1, x2, y2, sw=1.8, dash=None, start=False, end=False):
-    d = ' stroke-dasharray="%s"' % dash if dash else ""
-    ms = ' marker-start="url(#ah_s)"' if start else ""
-    me = ' marker-end="url(#ah_e)"' if end else ""
-    add('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="%s"%s%s%s/>'
-        % (x1, y1, x2, y2, INK, sw, d, ms, me))
-
-
-def square(cx, cy, s=10):
-    add('<rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>' % (cx - s / 2, cy - s / 2, s, s, INK))
-
-
-add('<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">' % (W, H, W, H))
-add('<defs>'
-    '<marker id="ah_e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">'
-    '<path d="M0,0 L10,5 L0,10 z" fill="%s"/></marker>'
-    '<marker id="ah_s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">'
-    '<path d="M0,0 L10,5 L0,10 z" fill="%s"/></marker></defs>' % (INK, INK))
-add('<rect width="%d" height="%d" fill="#FFFFFF"/>' % (W, H))
 
 # ---------- hàng thiết bị đầu cuối nối qua WLAN ----------
 clients = [
@@ -166,15 +116,4 @@ text(976, 779, "Dịch vụ trên Pi", 18)
 square(1100, 752, 10)
 text(1112, 757, "cổng", 18, "start")
 
-add("</svg>")
-
-with open(SVG, "w", encoding="utf-8") as f:
-    f.write("\n".join(out))
-print("đã ghi", SVG)
-
-# xuất PNG (2400 px rộng, nền trắng) và PDF vector (chữ chuyển thành đường) bằng Inkscape
-subprocess.run([INKSCAPE, SVG, "--export-type=png", "--export-width=2400",
-                "--export-background=#FFFFFF", "--export-filename=" + os.path.abspath(PNG)], check=True)
-subprocess.run([INKSCAPE, SVG, "--export-type=pdf", "--export-text-to-path",
-                "--export-filename=" + os.path.abspath(PDF)], check=True)
-print("đã xuất", os.path.abspath(PNG))
+f.save()

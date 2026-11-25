@@ -59,10 +59,16 @@ function table(cols, header, rows, centerCols = [], monoCols = []) {
   });
 }
 function img(file, w, hgt, cap) {
+  const png = fs.readFileSync(path.join(IMG, file));
+  const svgPath = path.join(IMG, file.replace(/\.png$/, ".svg"));
+  // 4 sơ đồ vẽ bằng Inkscape có bản SVG vector (chữ đã chuyển thành đường); ảnh chụp giao diện chỉ có PNG
+  const pic = fs.existsSync(svgPath)
+    ? new ImageRun({ type: "svg", data: fs.readFileSync(svgPath), fallback: { type: "png", data: png },
+        transformation: { width: w, height: hgt }, altText: { title: cap, description: cap, name: file } })
+    : new ImageRun({ type: "png", data: png, transformation: { width: w, height: hgt },
+        altText: { title: cap, description: cap, name: file } });
   return [
-    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 80, after: 40 }, keepNext: true,
-      children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(IMG, file)), transformation: { width: w, height: hgt },
-        altText: { title: cap, description: cap, name: file } })] }),
+    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 80, after: 40 }, keepNext: true, children: [pic] }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 140 }, children: [run(cap, { italics: true, size: 22 })] }),
   ];
 }
@@ -194,8 +200,8 @@ P.push(gap());
 // ================= 3
 P.push(h1("3. Sơ đồ khối"));
 P.push(p("Hệ thống tổ chức theo ba tầng kiến trúc IoT (Hình 1) và gồm 12 khối chức năng (Hình 2): nguồn; xử lý trung tâm + truyền thông (Pi 4); thu ảnh; ứng dụng; hai khối điều khiển node (ESP32-A, ESP32-B); nhận dạng; cân khay; hiển thị & báo; đo khối lượng ngăn/hộc; chấp hành; báo ngăn & môi trường."));
-P.push(...img("kientruc2.png", 560, 357, "Hình 1. Kiến trúc hệ thống ba tầng"));
-P.push(...img("khoi_phancung.png", 600, 362, "Hình 2. Sơ đồ khối phần cứng"));
+P.push(...img("kientruc2.png", 600, 395, "Hình 1. Kiến trúc hệ thống ba tầng"));
+P.push(...img("khoi_phancung.png", 620, 310, "Hình 2. Sơ đồ khối phần cứng"));
 P.push(p([B("Bố trí vật lý và vị trí camera. "), run("Quầy trả (Node A) và tủ gồm 2 ngăn dụng cụ + 1 hộc pin (Node B) được ghép thành một khối: khay trả đặt sát mặt trước tủ; hộc pin là ngăn 3 có cửa riêng, làm bằng vật liệu không dẫn điện (Formex) và lót khay nhựa chia từng cell. Raspberry Pi 4, camera và đèn khay gắn trên một tay đỡ bắt vào thân tủ, camera hướng thẳng xuống khay ở độ cao cố định. Toàn hệ thống chỉ dùng một camera, nối vào cổng CSI duy nhất của Pi 4; do Pi đặt ngay cạnh camera nên dùng được cáp CSI ngắn đi kèm. Việc chụp ảnh không cần người dùng bấm nút: load cell dưới khay là tín hiệu kích hoạt, khi khối lượng trên khay vượt 5 g và ổn định thì Pi 4 tự bật đèn, chụp và suy luận.")]));
 P.push(p("Camera đặt tại khay trả thay vì bên trong từng ngăn vì ba lý do:"));
 P.push(
@@ -310,7 +316,7 @@ P.push(...numList([
 
 P.push(h2("5.5. Luồng tín hiệu khi trả và xử lý Edge AI"));
 P.push(p("Hình 3 mô tả toàn bộ chuỗi bản tin giữa các thiết bị khi sinh viên trả dụng cụ (luồng trả pin cũng đi qua khay trả A và camera, sau đó mở hộc pin ở slot 3)."));
-P.push(...img("seq_tra.png", 620, 344, "Hình 3. Sơ đồ tuần tự luồng trả dụng cụ"));
+P.push(...img("seq_tra.png", 600, 414, "Hình 3. Sơ đồ tuần tự luồng trả dụng cụ"));
 P.push(...numList([
   [B("Phát hiện vật trên khay: "), run("tác vụ cân khay trên ESP32-A đọc HX711 (25 xung SCK, 24 bit), lọc như mục 5.4; khi khối lượng > 5 g và dao động dưới 1 g trong 1 s thì publish lab/kioskA/tray {m, stable} QoS 1. Ngưỡng 5 g loại các rung động khi chạm tay vào khay.")],
   [B("Thu ảnh: "), run("backend gửi lệnh bật đèn khay (ESP32-A → GPIO 26 → MOSFET), dùng Picamera2 (libcamera) chụp một khung 640 × 480 qua MIPI CSI-2.")],

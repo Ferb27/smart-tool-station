@@ -94,9 +94,10 @@ Báo cáo, sơ đồ và file Excel đều sinh từ script trong `tools/`. Mu�
 ```bash
 cd tools
 npm install                  # thư viện docx cho Node.js
-pip install matplotlib openpyxl pillow
-python diagram2.py && python diagram3.py && python seq.py   # sơ đồ (matplotlib) -> docs/images
-python figures/so_do_mang.py # sơ đồ mạng: sinh SVG rồi xuất PNG/PDF bằng Inkscape (sửa đường dẫn INKSCAPE trong file)
+pip install openpyxl pillow
+# 4 sơ đồ: mỗi script sinh file SVG (figures/*.svg, mở được bằng Inkscape) rồi xuất PNG + PDF vector vào docs/images
+# cần cài Inkscape; sửa biến INKSCAPE trong figures/svgkit.py nếu cài ở nơi khác
+cd figures && python kientruc.py && python khoi_phancung.py && python tuan_tu.py && python so_do_mang.py && cd ..
 python xlsx_parts.py         # docs/DanhSachLinhKien.xlsx
 python tasks.py              # docs/PhanCongNhiemVu.xlsx (GHI ĐÈ cột trạng thái)
 node build_report.js         # docs/BaoCaoYTuong.docx

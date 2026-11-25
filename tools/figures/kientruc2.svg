@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790">
+<rect width="1200" height="790" fill="#FFFFFF"/>
+<rect x="70" y="20" width="1110" height="182" rx="2" fill="#FAFAFA" stroke="#111111" stroke-width="1.0"/>
+<text x="44" y="111.0" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111" transform="rotate(-90 44 111.0)">TẦNG ỨNG DỤNG</text>
+<rect x="70" y="202" width="1110" height="244" rx="2" fill="#FAFAFA" stroke="#111111" stroke-width="1.0"/>
+<text x="44" y="324.0" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111" transform="rotate(-90 44 324.0)">TẦNG BIÊN (EDGE)</text>
+<rect x="70" y="446" width="1110" height="270" rx="2" fill="#FAFAFA" stroke="#111111" stroke-width="1.0"/>
+<text x="44" y="581.0" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111" transform="rotate(-90 44 581.0)">TẦNG THIẾT BỊ</text>
+<rect x="100" y="46" width="320" height="112" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="260" y="80" font-family="'Times New Roman', Times, serif" font-size="23" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Web sinh viên</text>
+<text x="260" y="107" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Mượn, hạn trả, báo hỏng</text>
+<text x="260" y="134" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">trên điện thoại</text>
+<rect x="470" y="46" width="320" height="112" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="630" y="80" font-family="'Times New Roman', Times, serif" font-size="23" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Web quản lý</text>
+<text x="630" y="107" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Dashboard, tồn kho,</text>
+<text x="630" y="134" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">cảnh báo, đăng ký thẻ</text>
+<rect x="840" y="46" width="320" height="112" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="1000" y="80" font-family="'Times New Roman', Times, serif" font-size="23" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Thông báo</text>
+<text x="1000" y="107" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Telegram · Email</text>
+<text x="1000" y="134" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">(nhắc quá hạn, sự cố)</text>
+<rect x="100" y="232" width="1060" height="192" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="2.4"/>
+<text x="630" y="264" font-family="'Times New Roman', Times, serif" font-size="23" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Raspberry Pi 4 (4 GB) — gateway và Edge AI</text>
+<line x1="100.00" y1="276.00" x2="1160.00" y2="276.00" stroke="#111111" stroke-width="1.2"/>
+<rect x="120" y="302" width="232" height="96" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
+<text x="236" y="337" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Mosquitto</text>
+<text x="236" y="365" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Broker MQTT 3.1.1</text>
+<rect x="382" y="302" width="232" height="96" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
+<text x="498" y="337" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">FastAPI + SQLite</text>
+<text x="498" y="365" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">REST · WebSocket</text>
+<rect x="644" y="302" width="232" height="96" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
+<text x="760" y="337" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Luật nghiệp vụ</text>
+<text x="760" y="365" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">mượn/trả · hạn mức</text>
+<rect x="906" y="302" width="232" height="96" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.6"/>
+<text x="1022" y="337" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Dịch vụ AI</text>
+<text x="1022" y="365" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">TFLite INT8 · 6 lớp</text>
+<line x1="364.00" y1="350.00" x2="370.00" y2="350.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="382.00,350.00 369.00,355.50 369.00,344.50" fill="#111111"/>
+<polygon points="352.00,350.00 365.00,344.50 365.00,355.50" fill="#111111"/>
+<line x1="626.00" y1="350.00" x2="632.00" y2="350.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="644.00,350.00 631.00,355.50 631.00,344.50" fill="#111111"/>
+<polygon points="614.00,350.00 627.00,344.50 627.00,355.50" fill="#111111"/>
+<line x1="888.00" y1="350.00" x2="894.00" y2="350.00" stroke="#111111" stroke-width="1.8"/>
+<polygon points="906.00,350.00 893.00,355.50 893.00,344.50" fill="#111111"/>
+<polygon points="876.00,350.00 889.00,344.50 889.00,355.50" fill="#111111"/>
+<rect x="100" y="530" width="320" height="160" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="260" y="564" font-family="'Times New Roman', Times, serif" font-size="22" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node A</text>
+<text x="260" y="592" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Kiosk + khay trả</text>
+<text x="260" y="620" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">RC522 · LCD 16×2 · cân khay</text>
+<text x="260" y="648" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">còi · đèn khay · nút báo hỏng</text>
+<rect x="460" y="530" width="340" height="160" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="630" y="564" font-family="'Times New Roman', Times, serif" font-size="22" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node B</text>
+<text x="630" y="592" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Tủ 2 ngăn + hộc pin</text>
+<text x="630" y="620" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">3 cân · 3 servo khóa</text>
+<text x="630" y="648" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">LED trạng thái · DHT22</text>
+<rect x="872" y="530" width="288" height="160" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="1016" y="564" font-family="'Times New Roman', Times, serif" font-size="22" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Camera OV5647</text>
+<text x="1016" y="592" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">5 MP · MIPI CSI-2</text>
+<text x="1016" y="620" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">đặt phía trên khay trả,</text>
+<text x="1016" y="648" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">đèn chiếu sáng cố định</text>
+<line x1="260.00" y1="172.00" x2="260.00" y2="218.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="260.00,230.00 254.50,217.00 265.50,217.00" fill="#111111"/>
+<polygon points="260.00,160.00 265.50,173.00 254.50,173.00" fill="#111111"/>
+<rect x="271.0" y="172.7" width="152.0" height="20.7" fill="#FAFAFA"/>
+<text x="274" y="188" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">HTTP · WebSocket</text>
+<line x1="630.00" y1="172.00" x2="630.00" y2="218.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="630.00,230.00 624.50,217.00 635.50,217.00" fill="#111111"/>
+<polygon points="630.00,160.00 635.50,173.00 624.50,173.00" fill="#111111"/>
+<rect x="641.0" y="172.7" width="152.0" height="20.7" fill="#FAFAFA"/>
+<text x="644" y="188" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">HTTP · WebSocket</text>
+<line x1="1000.00" y1="230.00" x2="1000.00" y2="172.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="14 4 3 4"/>
+<polygon points="1000.00,160.00 1005.50,173.00 994.50,173.00" fill="#111111"/>
+<rect x="1011.0" y="172.7" width="134.0" height="20.7" fill="#FAFAFA"/>
+<text x="1014" y="188" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">HTTPS (qua 4G)</text>
+<line x1="260.00" y1="438.00" x2="260.00" y2="516.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="260.00,528.00 254.50,515.00 265.50,515.00" fill="#111111"/>
+<polygon points="260.00,426.00 265.50,439.00 254.50,439.00" fill="#111111"/>
+<rect x="271.0" y="470.7" width="116.0" height="20.7" fill="#FAFAFA"/>
+<text x="274" y="486" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">Wi-Fi · MQTT</text>
+<line x1="630.00" y1="438.00" x2="630.00" y2="516.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="630.00,528.00 624.50,515.00 635.50,515.00" fill="#111111"/>
+<polygon points="630.00,426.00 635.50,439.00 624.50,439.00" fill="#111111"/>
+<rect x="641.0" y="470.7" width="116.0" height="20.7" fill="#FAFAFA"/>
+<text x="644" y="486" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="start" fill="#111111">Wi-Fi · MQTT</text>
+<line x1="1022.00" y1="438.00" x2="1022.00" y2="528.00" stroke="#111111" stroke-width="2.0"/>
+<polygon points="1022.00,426.00 1027.50,439.00 1016.50,439.00" fill="#111111"/>
+<rect x="1033.0" y="470.7" width="62.0" height="20.7" fill="#FAFAFA"/>
+<text x="1036" y="486" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">CSI-2</text>
+<text x="100" y="760" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="start" fill="#111111">Chú giải:</text>
+<line x1="200.00" y1="754.00" x2="250.00" y2="754.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<text x="262" y="760" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Không dây (Wi-Fi 802.11n)</text>
+<line x1="511.00" y1="754.00" x2="561.00" y2="754.00" stroke="#111111" stroke-width="2.0"/>
+<text x="573" y="760" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Có dây / cục bộ</text>
+<line x1="736.00" y1="754.00" x2="786.00" y2="754.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="14 4 3 4"/>
+<text x="798" y="760" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Mạng di động 4G</text>
+<rect x="961" y="746" width="34" height="16" rx="1" fill="#EDEDED" stroke="#111111" stroke-width="1.2"/>
+<text x="1007" y="760" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Thiết bị ngoài</text>
+</svg>

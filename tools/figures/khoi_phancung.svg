@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#FFFFFF"/>
+<rect x="120" y="22" width="200" height="70" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="220.0" y="51.0" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Adapter 5 V – 3 A</text>
+<text x="220.0" y="76.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Node A, Node B, servo</text>
+<rect x="480" y="22" width="240" height="70" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="600.0" y="51.0" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Adapter USB-C</text>
+<text x="600.0" y="76.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">5,1 V – 3 A cho Pi 4</text>
+<line x1="220.00" y1="92.00" x2="220.00" y2="124.00" stroke="#111111" stroke-width="4.4"/>
+<path d="M220,124 L592,124 A8,8 0 0 1 608,124 L980,124" fill="none" stroke="#111111" stroke-width="4.4"/>
+<line x1="220.00" y1="124.00" x2="220.00" y2="156.00" stroke="#111111" stroke-width="4.4"/>
+<polygon points="220.00,168.00 214.50,155.00 225.50,155.00" fill="#111111"/>
+<line x1="980.00" y1="124.00" x2="980.00" y2="156.00" stroke="#111111" stroke-width="4.4"/>
+<polygon points="980.00,168.00 974.50,155.00 985.50,155.00" fill="#111111"/>
+<text x="234" y="114" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">5 V</text>
+<line x1="600.00" y1="92.00" x2="600.00" y2="156.00" stroke="#111111" stroke-width="4.4"/>
+<polygon points="600.00,168.00 594.50,155.00 605.50,155.00" fill="#111111"/>
+<rect x="611.0" y="134.7" width="62.0" height="20.7" fill="#FFFFFF"/>
+<text x="614" y="150" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">5,1 V</text>
+<rect x="20" y="168" width="400" height="92" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2.2"/>
+<text x="220.0" y="208.0" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node A</text>
+<text x="220.0" y="233.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Kiosk + khay trả</text>
+<rect x="480" y="168" width="240" height="92" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2.6"/>
+<text x="600.0" y="208.0" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Raspberry Pi 4</text>
+<text x="600.0" y="233.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">gateway · AI · CSDL</text>
+<rect x="780" y="168" width="400" height="92" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2.2"/>
+<text x="980.0" y="208.0" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">ESP32 Node B</text>
+<text x="980.0" y="233.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">Tủ 2 ngăn + hộc pin</text>
+<line x1="432.00" y1="214.00" x2="468.00" y2="214.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="480.00,214.00 467.00,219.50 467.00,208.50" fill="#111111"/>
+<polygon points="420.00,214.00 433.00,208.50 433.00,219.50" fill="#111111"/>
+<rect x="420.5" y="186.7" width="53.0" height="20.7" fill="#FFFFFF"/>
+<text x="450.0" y="202" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="middle" fill="#111111">Wi-Fi</text>
+<text x="450.0" y="242" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MQTT</text>
+<line x1="732.00" y1="214.00" x2="768.00" y2="214.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<polygon points="780.00,214.00 767.00,219.50 767.00,208.50" fill="#111111"/>
+<polygon points="720.00,214.00 733.00,208.50 733.00,219.50" fill="#111111"/>
+<rect x="720.5" y="186.7" width="53.0" height="20.7" fill="#FFFFFF"/>
+<text x="750.0" y="202" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="italic" text-anchor="middle" fill="#111111">Wi-Fi</text>
+<text x="750.0" y="242" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MQTT</text>
+<line x1="220.00" y1="260.00" x2="220.00" y2="506.00" stroke="#111111" stroke-width="2.0"/>
+<rect x="20" y="300" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="110" y="326" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">RFID RC522</text>
+<text x="110" y="350" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">SPI</text>
+<line x1="200.00" y1="331.00" x2="220.00" y2="331.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="240" y="300" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="330" y="326" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">LCD 16×2</text>
+<text x="330" y="350" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">I²C · PCF8574</text>
+<line x1="220.00" y1="331.00" x2="240.00" y2="331.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="20" y="372" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="110" y="398" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">HX711 + load cell</text>
+<text x="110" y="422" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">khay · DOUT/SCK</text>
+<line x1="200.00" y1="403.00" x2="220.00" y2="403.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="240" y="372" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="330" y="398" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Còi active</text>
+<text x="330" y="422" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">GPIO · S8050</text>
+<line x1="220.00" y1="403.00" x2="240.00" y2="403.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="20" y="444" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="110" y="470" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Đèn khay</text>
+<text x="110" y="494" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">GPIO · MOSFET</text>
+<line x1="200.00" y1="475.00" x2="220.00" y2="475.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="240" y="444" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="330" y="470" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Nút báo hỏng</text>
+<text x="330" y="494" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">GPIO · ngắt</text>
+<line x1="220.00" y1="475.00" x2="240.00" y2="475.00" stroke="#111111" stroke-width="1.8"/>
+<line x1="980.00" y1="260.00" x2="980.00" y2="434.00" stroke="#111111" stroke-width="2.0"/>
+<rect x="780" y="300" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="870" y="326" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">3 × load cell</text>
+<text x="870" y="350" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">+ HX711 · DOUT/SCK</text>
+<line x1="960.00" y1="331.00" x2="980.00" y2="331.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="1000" y="300" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="1090" y="326" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">3 × servo SG90</text>
+<text x="1090" y="350" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">PWM 50 Hz (LEDC)</text>
+<line x1="980.00" y1="331.00" x2="1000.00" y2="331.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="780" y="372" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="870" y="398" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">6 × LED đỏ/xanh</text>
+<text x="870" y="422" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">GPIO · 330 Ω</text>
+<line x1="960.00" y1="403.00" x2="980.00" y2="403.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="1000" y="372" width="180" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.4"/>
+<text x="1090" y="398" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">DHT22</text>
+<text x="1090" y="422" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">1-wire · GPIO 17</text>
+<line x1="980.00" y1="403.00" x2="1000.00" y2="403.00" stroke="#111111" stroke-width="1.8"/>
+<rect x="480" y="316" width="190" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="575.0" y="341.0" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">Camera OV5647</text>
+<text x="575.0" y="366.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">MIPI CSI-2</text>
+<line x1="565.00" y1="272.00" x2="565.00" y2="316.00" stroke="#111111" stroke-width="2.0"/>
+<polygon points="565.00,260.00 570.50,273.00 559.50,273.00" fill="#111111"/>
+<rect x="576.0" y="278.7" width="62.0" height="20.7" fill="#FFFFFF"/>
+<text x="579" y="294" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">CSI-2</text>
+<rect x="480" y="438" width="240" height="62" rx="2" fill="#EDEDED" stroke="#111111" stroke-width="1.6"/>
+<text x="600.0" y="463.0" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="middle" fill="#111111">USB flash</text>
+<text x="600.0" y="488.0" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="middle" fill="#111111">sao lưu mỗi ngày</text>
+<line x1="700.00" y1="260.00" x2="700.00" y2="426.00" stroke="#111111" stroke-width="2.0"/>
+<polygon points="700.00,438.00 694.50,425.00 705.50,425.00" fill="#111111"/>
+<rect x="524.0" y="403.6" width="161.0" height="19.5" fill="#FFFFFF"/>
+<text x="688" y="418" font-family="Consolas, 'Courier New', monospace" font-size="17" font-weight="normal" font-style="normal" text-anchor="end" fill="#111111">sqlite3 .backup</text>
+<text x="20" y="562" font-family="'Times New Roman', Times, serif" font-size="19" font-weight="bold" font-style="normal" text-anchor="start" fill="#111111">Chú giải:</text>
+<line x1="120.00" y1="556.00" x2="170.00" y2="556.00" stroke="#111111" stroke-width="2.0" stroke-dasharray="7 5"/>
+<text x="182" y="562" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Không dây (Wi-Fi 802.11n)</text>
+<line x1="431.00" y1="556.00" x2="481.00" y2="556.00" stroke="#111111" stroke-width="2.0"/>
+<text x="493" y="562" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Tín hiệu</text>
+<line x1="595.00" y1="556.00" x2="645.00" y2="556.00" stroke="#111111" stroke-width="4.4"/>
+<text x="657" y="562" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Cấp nguồn</text>
+<rect x="768" y="548" width="34" height="16" rx="1" fill="#EDEDED" stroke="#111111" stroke-width="1.2"/>
+<text x="814" y="562" font-family="'Times New Roman', Times, serif" font-size="18" font-weight="normal" font-style="normal" text-anchor="start" fill="#111111">Thiết bị ngoài</text>
+</svg>
