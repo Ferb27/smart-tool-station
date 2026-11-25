@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinh viên – Trạm dụng cụ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&subset=vietnamese&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="student-page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="topbar-brand">TRẠM DỤNG CỤ / SINH VIÊN</a>
+      <nav class="topbar-nav" aria-label="Điều hướng chính">
+        <a href="index.html" class="nav-tab">Vai trò</a>
+        <a href="student.html" class="nav-tab active">Sinh viên</a>
+        <a href="manager.html" class="nav-tab">Quản lý</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="student-wrap">
+    <!-- Thông tin sinh viên -->
+    <section class="panel student-identity">
+      <div class="student-identity-top">
+        <div class="section-label">THẺ SINH VIÊN RFID</div>
+        <div class="student-count mono" id="sv-borrow-summary">—</div>
+      </div>
+      <h1 class="student-name" id="sv-name">—</h1>
+      <div class="student-meta-grid">
+        <div class="student-meta-cell">
+          <span class="meta-k">MSSV</span>
+          <span class="meta-v mono" id="sv-mssv">—</span>
+        </div>
+        <div class="student-meta-cell">
+          <span class="meta-k">LỚP</span>
+          <span class="meta-v mono" id="sv-class">—</span>
+        </div>
+        <div class="student-meta-cell">
+          <span class="meta-k">MÃ THẺ</span>
+          <span class="meta-v mono" id="sv-card">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dụng cụ đang mượn -->
+    <section class="section-block">
+      <div class="section-head">
+        <h2 class="section-label">ĐANG MƯỢN</h2>
+        <span class="section-meta mono">HẠN CHUẨN 02:00:00</span>
+      </div>
+      <div id="borrowing-list" class="borrowing-stack"></div>
+
+      <div class="student-actions">
+        <button type="button" class="btn-ink" id="toggle-report-btn">BÁO HỎNG DỤNG CỤ</button>
+        <button type="button" class="btn-subtle" id="toggle-guide-btn">HƯỚNG DẪN TRẢ</button>
+      </div>
+
+      <!-- Khung báo hỏng dụng cụ -->
+      <div id="report-broken-box" class="panel inline-panel" hidden>
+        <div class="inline-panel-head">
+          <span class="section-label">PHIẾU BÁO HỎNG DỤNG CỤ</span>
+          <button type="button" class="btn-close-text mono" id="close-report-btn">✕ ĐÓNG</button>
+        </div>
+        <form id="report-broken-form" class="report-form">
+          <label class="field-label" for="report-tool-select">Chọn dụng cụ gặp sự cố</label>
+          <select id="report-tool-select" class="field-input"></select>
+          <label class="field-label" for="report-note-input">Mô tả ngắn</label>
+          <input id="report-note-input" class="field-input" type="text" placeholder="Ví dụ: Lưỡi kìm mẻ, thiếu đầu tua vít...">
+          <div class="report-form-foot">
+            <button type="submit" class="btn-ink">XÁC NHẬN BÁO HỎNG</button>
+            <span class="report-feedback mono" id="report-feedback"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Hướng dẫn trả dụng cụ -->
+      <div id="return-guide-box" class="panel inline-panel" hidden>
+        <div class="inline-panel-head">
+          <span class="section-label">QUY TRÌNH TRẢ TẠI TRẠM</span>
+          <button type="button" class="btn-close-text mono" id="close-guide-btn">✕ ĐÓNG</button>
+        </div>
+        <ol class="guide-ol">
+          <li><span class="mono">01</span> Quét thẻ RFID tại quầy Node A để mở phiên trả.</li>
+          <li><span class="mono">02</span> Đặt dụng cụ hoặc pin lên khay cân (Load cell) đối chiếu khối lượng chuẩn và AI.</li>
+          <li><span class="mono">03</span> Cất đúng Ngăn 1, Ngăn 2 hoặc Hộc pin khi màn hình LCD xác nhận hợp lệ.</li>
+          <li><span class="mono">04</span> Nếu phát hiện hư hỏng, nhấn nút báo hỏng để khóa kiểm tra.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Danh sách 4 dụng cụ trong trạm -->
+    <section class="section-block">
+      <div class="section-head">
+        <h2 class="section-label">DỤNG CỤ TRONG TRẠM</h2>
+        <span class="section-meta mono">4 MÓN · 2 NGĂN + HỘC PIN</span>
+      </div>
+      <div class="panel">
+        <div id="student-tools" class="tool-rows"></div>
+      </div>
+    </section>
+
+    <!-- Khối mượn Pin 18650 theo số lượng -->
+    <section class="section-block">
+      <div class="section-head">
+        <h2 class="section-label">PIN 18650</h2>
+        <span class="section-meta mono">PIN-18650 · TỐI ĐA 4 CELL</span>
+      </div>
+      <div class="panel battery-panel">
+        <div class="battery-meta-grid">
+          <div class="student-meta-cell">
+            <span class="meta-k">TỒN KHO HỘC PIN</span>
+            <span class="meta-v mono" id="sv-pin-stock">—</span>
+          </div>
+          <div class="student-meta-cell">
+            <span class="meta-k">ĐANG NỢ</span>
+            <span class="meta-v mono" id="sv-pin-debt">—</span>
+          </div>
+          <div class="student-meta-cell">
+            <span class="meta-k">HẠN TRẢ</span>
+            <span class="meta-v mono" id="sv-pin-due">—</span>
+          </div>
+        </div>
+        <div class="battery-borrow-bar">
+          <div class="battery-qty-group">
+            <span class="meta-k">SỐ LƯỢNG MƯỢN (1–4)</span>
+            <div class="qty-stepper" role="group" aria-label="Chọn số lượng pin 18650">
+              <button type="button" class="qty-btn mono" id="pin-qty-minus" aria-label="Giảm số lượng">−</button>
+              <span class="qty-val mono" id="pin-qty-val">1</span>
+              <button type="button" class="qty-btn mono" id="pin-qty-plus" aria-label="Tăng số lượng">+</button>
+            </div>
+          </div>
+          <div class="battery-action-group">
+            <button type="button" class="btn-ink" id="borrow-pin-btn">MƯỢN PIN</button>
+            <span class="report-feedback mono" id="sv-pin-feedback"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lịch sử mượn trả (dọc 2 dòng, không dùng bảng nhiều cột) -->
+    <section class="section-block">
+      <div class="section-head">
+        <h2 class="section-label">LỊCH SỬ</h2>
+        <span class="section-meta mono">3 LƯỢT GẦN NHẤT</span>
+      </div>
+      <div class="panel">
+        <div id="student-history-list" class="history-rows"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

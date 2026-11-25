@@ -1,0 +1,14 @@
+# Mẫu, chưa chạy thử trên Pi thật
+# Đường dẫn triển khai trên Pi: /etc/mosquitto/conf.d/tram.conf
+
+listener 1883 192.168.4.1
+protocol mqtt
+
+# Bắt buộc xác thực user/password và kiểm soát ACL
+allow_anonymous false
+password_file /etc/mosquitto/passwd
+acl_file /etc/mosquitto/acl
+
+persistence true
+persistence_location /var/lib/mosquitto/
+log_dest file /var/log/mosquitto/mosquitto.log

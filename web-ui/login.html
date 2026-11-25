@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập – Trạm dụng cụ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&subset=vietnamese&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="login-page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="topbar-brand">TRẠM DỤNG CỤ / ĐĂNG NHẬP</a>
+      <div class="topbar-meta mono">HTTP://TRAM.LOCAL:8000</div>
+    </div>
+  </header>
+
+  <main class="login-wrap">
+    <section class="panel login-panel">
+      <div class="login-head">
+        <div>
+          <div class="section-label">XÁC THỰC PHIÊN LÀM VIỆC (COOKIE 8 GIỜ)</div>
+          <h1 class="login-title">Đăng nhập hệ thống</h1>
+        </div>
+        <a href="index.html" class="btn-close-text mono">← CHỌN VAI TRÒ</a>
+      </div>
+
+      <div class="login-mode-tabs" role="tablist" aria-label="Chế độ đăng nhập">
+        <button type="button" class="login-mode-btn active" data-role="student">SINH VIÊN</button>
+        <button type="button" class="login-mode-btn" data-role="manager">QUẢN LÝ</button>
+      </div>
+
+      <form id="login-form-student" class="login-form">
+        <label class="field-label" for="login-mssv">Mã số sinh viên (MSSV)</label>
+        <input id="login-mssv" class="field-input mono" type="text" value="20221234" placeholder="Ví dụ: 20221234" autocomplete="username">
+
+        <label class="field-label" for="login-pin">Mã PIN (6 chữ số, đặt khi đăng ký thẻ)</label>
+        <input id="login-pin" class="field-input mono" type="password" inputmode="numeric" maxlength="6" value="123456" placeholder="••••••" autocomplete="current-password">
+
+        <div class="login-hint mono">Mẫu thử: MSSV 20221234 · PIN 123456 (lưu băm pbkdf2_hmac)</div>
+        <div class="login-foot">
+          <button type="submit" class="btn-ink">ĐĂNG NHẬP</button>
+          <span class="report-feedback mono" id="login-student-feedback"></span>
+        </div>
+      </form>
+
+      <form id="login-form-manager" class="login-form" hidden>
+        <label class="field-label" for="login-manager-pass">Mật khẩu quản lý phòng lab</label>
+        <input id="login-manager-pass" class="field-input mono" type="password" value="tram2026" placeholder="Nhập mật khẩu quản lý" autocomplete="current-password">
+
+        <div class="login-hint mono">Mẫu thử: tram2026 (toàn quyền kho, đăng ký thẻ, tắt hệ thống)</div>
+        <div class="login-foot">
+          <button type="submit" class="btn-ink">ĐĂNG NHẬP</button>
+          <span class="report-feedback mono" id="login-manager-feedback"></span>
+        </div>
+      </form>
+    </section>
+
+    <footer class="index-footer mono">
+      <span>Wi-Fi AP: TramDungCu · 192.168.4.1</span>
+      <span>Giao diện mẫu · dữ liệu mô phỏng</span>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

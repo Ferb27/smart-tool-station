@@ -2,12 +2,12 @@
 
 Đồ án môn **Kiến trúc và giao thức IoT** (lý thuyết + thực tập).
 
-Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mượn dụng cụ cầm tay không dùng điện (kìm cắt, kìm tuốt dây, bộ tua vít, nhíp). Khi trả, hệ thống kiểm tra cùng lúc hai điều kiện:
+Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mượn dụng cụ cầm tay không dùng điện (kìm cắt, kìm tuốt dây, bộ tua vít, nhíp) và mượn **pin 18650 có mạch bảo vệ** theo số lượng (1–4 cell/người, tối đa 8 cell trong hộc). Khi trả, hệ thống kiểm tra cùng lúc hai điều kiện:
 
-- **đúng loại dụng cụ**: camera và mô hình AI chạy ngay trên Raspberry Pi 4;
-- **đủ phụ kiện**: cân bằng load cell.
+- **đúng loại vật phẩm**: camera và mô hình AI 6 lớp chạy ngay trên Raspberry Pi 4;
+- **đủ phụ kiện / đúng số cell pin**: cân bằng load cell (đếm số pin theo `m_unit ≈ 46,0 g`).
 
-Đạt cả hai thì ngăn tủ tự mở để cất dụng cụ vào. Dụng cụ có vấn đề thì người trả nhấn nút báo hỏng, dụng cụ bị khóa chờ người quản lý kiểm tra.
+Đạt cả hai thì ngăn tủ hoặc hộc pin tự mở để cất vào. Dụng cụ có vấn đề thì người trả nhấn nút báo hỏng, dụng cụ bị khóa chờ người quản lý kiểm tra.
 
 ![Kiến trúc hệ thống](docs/images/kientruc2.png)
 
@@ -15,18 +15,18 @@ Trạm cho phòng thực hành điện tử. Sinh viên quẹt thẻ để mư�
 
 | Khối | Phần cứng | Vai trò |
 |---|---|---|
-| Gateway / Edge AI | Raspberry Pi 4 (4 GB) + camera OV5647 | Mosquitto (MQTT broker), backend FastAPI + SQLite, suy luận TFLite INT8, web, Telegram/Email |
-| Node A – kiosk + khay trả | ESP32 + RC522 + LCD 16×2 I2C + load cell/HX711 + còi + đèn khay + nút báo hỏng | Định danh thẻ, cân dụng cụ trả, hiển thị, báo hỏng |
-| Node B – tủ 2 ngăn | ESP32 + 2 load cell/HX711 + 2 servo SG90 + LED đỏ/xanh | Cân từng ngăn, khóa/mở ngăn |
+| Gateway / Edge AI | Raspberry Pi 4 (4 GB) + camera OV5647 | Mosquitto (MQTT broker), backend FastAPI + SQLite, suy luận TFLite INT8 (6 lớp), web, Telegram/Email |
+| Node A – kiosk + khay trả | ESP32 + RC522 + LCD 16×2 I2C + load cell/HX711 + còi + đèn khay + nút báo hỏng | Định danh thẻ, cân dụng cụ/pin trả, hiển thị, báo hỏng |
+| Node B – tủ 2 ngăn + hộc pin | ESP32 + 3 load cell/HX711 + 3 servo SG90 + LED đỏ/xanh (3 ngăn/hộc) + DHT22 | Cân từng ngăn/hộc (đếm pin 18650), khóa/mở ngăn và hộc, giám sát nhiệt độ – độ ẩm |
 
-Node và gateway giao tiếp qua mạng Wi-Fi riêng do Pi 4 phát (không phụ thuộc Wi-Fi trường), dùng MQTT 3.1.1 (QoS 1, retained, Last Will). Đặc tả bản tin: [docs/mqtt_spec.md](docs/mqtt_spec.md).
+Node và gateway giao tiếp qua mạng Wi-Fi riêng do Pi 4 phát (`TramDungCu`, `192.168.4.1`, không phụ thuộc Wi-Fi trường), dùng MQTT 3.1.1 (QoS 1, retained, Last Will). Giao diện web phục vụ qua FastAPI cổng 8000 tại `http://tram.local:8000` hoặc `http://192.168.4.1:8000`; dữ liệu lưu cục bộ trong SQLite (`/var/lib/tram/tram.db`). Đặc tả bản tin: [docs/mqtt_spec.md](docs/mqtt_spec.md); cấu hình hạ tầng mẫu: [pi/backend/config/](pi/backend/config/README.md).
 
 ## Cấu trúc thư mục
 
 ```
 docs/            Báo cáo ý tưởng (docx/pdf), danh sách linh kiện, phân công, sơ đồ
 firmware/node_a  Firmware ESP32 Node A (kiosk + khay trả)
-firmware/node_b  Firmware ESP32 Node B (tủ 2 ngăn)
+firmware/node_b  Firmware ESP32 Node B (tủ 2 ngăn + hộc pin)
 pi/backend       Mosquitto config, backend FastAPI, CSDL SQLite, web
 pi/ai            Thu thập ảnh, huấn luyện, mô hình TFLite, dịch vụ suy luận
 hardware/kicad   Sơ đồ nguyên lý và bố trí mạch (hàn trên PCB đục lỗ)

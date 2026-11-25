@@ -39,7 +39,8 @@ for g in parts:
     ws.cell(r, 1, g["group"]).font = Font(name=F, bold=True, size=11)
     ws.merge_cells(start_row=r, start_column=1, end_row=r, end_column=9)
     ws.cell(r, 1).fill = PatternFill("solid", fgColor="F2F2F2")
-    for name, q, price, note, have in g["items"]:
+    for item in g["items"]:
+        name, q, price, note, have = item[:5]
         r += 1
         n += 1
         item_rows.append(r)

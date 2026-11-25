@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trạm dụng cụ – Chọn vai trò</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&subset=vietnamese&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-index">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">TRẠM DỤNG CỤ / CHỌN VAI TRÒ</div>
+      <div class="topbar-meta mono">PHÒNG THỰC HÀNH ĐIỆN TỬ</div>
+    </div>
+  </header>
+
+  <main class="index-wrap">
+    <section class="index-hero">
+      <div class="section-label">HỆ THỐNG GIÁM SÁT BÀN ĐO · RFID + LOAD CELL + DHT22</div>
+      <h1 class="index-title">Trạm mượn – trả dụng cụ thông minh</h1>
+      <p class="index-sub">
+        Theo dõi trạng thái 4 dụng cụ và hộc pin 18650 trong tủ (2 ngăn dụng cụ + hộc pin), hạn mượn qua thẻ RFID và thông số cảm biến Node A / Node B theo thời gian thực.
+      </p>
+    </section>
+
+    <section class="role-list" aria-label="Chọn vai trò truy cập">
+      <a href="login.html?role=student" class="role-row">
+        <div class="role-row-main">
+          <div class="role-row-title mono">01 — SINH VIÊN →</div>
+          <p class="role-row-desc">
+            Đăng nhập bằng MSSV + PIN 6 số để xem thẻ RFID, dụng cụ đang mượn, pin 18650 và lịch sử cá nhân.
+          </p>
+        </div>
+        <div class="role-row-meta mono">390PX / DESKTOP</div>
+      </a>
+
+      <a href="login.html?role=manager" class="role-row">
+        <div class="role-row-main">
+          <div class="role-row-title mono">02 — QUẢN LÝ →</div>
+          <p class="role-row-desc">
+            Bảng điều khiển 5 tab: tổng quan Pi 4 &amp; 2 node, cảm biến, giao dịch, kho và thiết lập hệ thống.
+          </p>
+        </div>
+        <div class="role-row-meta mono">5 TAB · THỜI GIAN THỰC</div>
+      </a>
+    </section>
+
+    <footer class="index-footer mono">
+      <span>Đồ án Thực tập Kiến trúc IoT · Trạm mượn – trả dụng cụ thông minh</span>
+      <span>dữ liệu mô phỏng</span>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Nguồn ảnh linh kiện thực tế (`docs/images/parts/`)
+
+- `rpi4.jpg` – https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4_Model_B_-_Top.jpg
+- `microsd.jpg` – https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg
+- `usbc_psu.jpg` – https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Wall_Adapter_Power_Supply_-_5.1VDC,_3.0A,_15.3W_(USB-C)_-_50034052952.jpg
+- `rpi_heatsink_fan.jpg` – https://www.adafruit.com/product/4794
+- `ov5647_cam.jpg` – https://www.adafruit.com/product/1367
+- `esp32_devkit.jpg` – https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg
+- `rc522.jpg` – https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg
+- `lcd1602_i2c.jpg` – https://www.adafruit.com/product/181
+- `bss138_shifter.jpg` – https://www.adafruit.com/product/757
+- `loadcell_hx711.jpg` – https://www.adafruit.com/product/4541 (load cell) và https://www.adafruit.com/product/5974 (HX711)
+- `buzzer_5v.jpg` – https://www.adafruit.com/product/160
+- `s8050.jpg` – https://www.adafruit.com/product/756 (transistor NPN vỏ TO-92)
+- `irlz44n.jpg` – https://commons.wikimedia.org/wiki/File:Power_MOSFET.jpg (MOSFET vỏ TO-220)
+- `led_white_5mm.jpg` – https://www.adafruit.com/product/754
+- `pushbutton_12mm.jpg` – https://www.adafruit.com/product/1119
+- `servo_sg90.jpg` – https://commons.wikimedia.org/wiki/File:Tower_Pro_SG90_micro_servo_motor.jpg
+- `led_red_green.jpg` – https://www.adafruit.com/product/299 (đỏ) và https://www.adafruit.com/product/298 (xanh lá)
+- `dht22.jpg` – https://commons.wikimedia.org/wiki/File:DHT22-Temperatur-Sensor.jpg
+- `adapter_5v.jpg` – https://www.adafruit.com/product/1466
+- `pin_18650.jpg` – https://commons.wikimedia.org/wiki/File:LiIon-18650-match.jpg

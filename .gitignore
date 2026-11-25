@@ -11,3 +11,6 @@ pi/ai/dataset/
 ~$*
 .DS_Store
 Thumbs.db
+/etc/tram/
+*.env
+.env

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý – Trạm dụng cụ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&subset=vietnamese&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="manager-page">
+  <header class="topbar">
+    <div class="topbar-inner topbar-manager">
+      <div class="topbar-left">
+        <a href="index.html" class="topbar-brand">TRẠM DỤNG CỤ / QUẢN LÝ</a>
+        <nav class="topbar-nav" role="tablist" aria-label="Điều hướng quản lý">
+          <button class="nav-tab active" data-tab="tong-quan" type="button">Tổng quan</button>
+          <button class="nav-tab" data-tab="cam-bien" type="button">Cảm biến</button>
+          <button class="nav-tab" data-tab="giao-dich" type="button">Giao dịch</button>
+          <button class="nav-tab" data-tab="kho" type="button">Kho</button>
+          <button class="nav-tab" data-tab="thiet-lap" type="button">Thiết lập</button>
+        </nav>
+      </div>
+      <div class="topbar-right mono">
+        <span id="live-clock">--:--:--</span>
+        <span class="topbar-sep">·</span>
+        <span>Cập nhật lần cuối <span id="last-updated">--:--:--</span></span>
+        <span class="topbar-sep topbar-desktop-only">·</span>
+        <a href="student.html" class="topbar-link topbar-desktop-only">Cổng sinh viên →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="manager-wrap">
+    <!-- TAB 1: TỔNG QUAN -->
+    <section class="tab-panel active" id="tab-tong-quan">
+      <!-- Dải số liệu ngang chia ô bằng đường kẻ dọc -->
+      <section class="metric-strip" aria-label="Tổng quan trạng thái 4 dụng cụ và pin 18650">
+        <div class="metric-cell">
+          <div class="section-label">SẴN CÓ</div>
+          <div class="metric-val mono"><span id="stat-available">0</span><span class="metric-denom">/4</span></div>
+          <div class="metric-sub mono" id="stat-available-sub">—</div>
+        </div>
+        <div class="metric-cell">
+          <div class="section-label">ĐANG MƯỢN</div>
+          <div class="metric-val mono" id="stat-borrowed">0</div>
+          <div class="metric-sub mono" id="stat-borrowed-sub">—</div>
+        </div>
+        <div class="metric-cell">
+          <div class="section-label">QUÁ HẠN</div>
+          <div class="metric-val mono" id="stat-overdue">0</div>
+          <div class="metric-sub mono" id="stat-overdue-sub">—</div>
+        </div>
+        <div class="metric-cell">
+          <div class="section-label">CHỜ KIỂM TRA</div>
+          <div class="metric-val mono" id="stat-check">0</div>
+          <div class="metric-sub mono" id="stat-check-sub">—</div>
+        </div>
+        <div class="metric-cell">
+          <div class="section-label">PIN 18650 CÒN</div>
+          <div class="metric-val mono" id="stat-battery-wrap"><span id="stat-battery">6</span><span class="metric-denom">/8</span><span class="metric-warn-mark" id="stat-battery-warn"></span></div>
+          <div class="metric-sub mono" id="stat-battery-sub">46,0 g/cell · tối đa 4/người</div>
+        </div>
+      </section>
+
+      <!-- Bảng trạng thái thiết bị -->
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">TRẠNG THÁI THIẾT BỊ</h2>
+          <div class="section-head-actions">
+            <span class="section-meta mono">PI 4 + 2 NODE ESP32</span>
+            <button type="button" class="btn-inline mono" id="toggle-nodeb-btn">Mô phỏng Node B offline</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="table-wrap">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>TÊN</th>
+                  <th>TRẠNG THÁI</th>
+                  <th>LẦN NHẬN CUỐI</th>
+                  <th>FIRMWARE</th>
+                  <th>CẢM BIẾN LIÊN QUAN</th>
+                  <th class="col-right">RSSI</th>
+                </tr>
+              </thead>
+              <tbody id="devices-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bảng cảnh báo cần xử lý -->
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">CẢNH BÁO CẦN XỬ LÝ</h2>
+          <span class="section-meta mono" id="alerts-count-text">0 MỤC</span>
+        </div>
+        <div class="panel">
+          <div class="table-wrap">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>GIỜ</th>
+                  <th>MỨC</th>
+                  <th>NGUỒN</th>
+                  <th>NỘI DUNG</th>
+                  <th class="col-right">HÀNH ĐỘNG</th>
+                </tr>
+              </thead>
+              <tbody id="alerts-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nhật ký sự kiện -->
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">NHẬT KÝ SỰ KIỆN</h2>
+          <span class="section-meta mono" id="overview-env-summary">DHT22: — °C · — %RH</span>
+        </div>
+        <div class="log-box mono" id="event-log-list" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <!-- TAB 2: CẢM BIẾN -->
+    <section class="tab-panel" id="tab-cam-bien">
+      <!-- Khối biểu đồ khối lượng Load cell -->
+      <section class="panel chart-panel">
+        <div class="panel-bar">
+          <div class="panel-bar-title">
+            <span class="section-label">KHỐI LƯỢNG TẢI CẢM BIẾN (LOAD CELL)</span>
+            <span class="panel-unit mono">g</span>
+          </div>
+          <div class="range-tabs" data-chart-group="weight">
+            <button type="button" class="range-btn active" data-points="20">1 PHÚT</button>
+            <button type="button" class="range-btn" data-points="40">5 PHÚT</button>
+            <button type="button" class="range-btn" data-points="60">1 GIỜ</button>
+          </div>
+        </div>
+
+        <div class="readout-strip">
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-teal"></span>
+              <span class="section-label">KHAY TRẢ</span>
+            </div>
+            <div class="readout-num mono"><span id="live-khay">—</span> <span class="readout-u">g</span></div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-ink"></span>
+              <span class="section-label">NGĂN 1</span>
+            </div>
+            <div class="readout-num mono"><span id="live-ngan1">—</span> <span class="readout-u">g</span></div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-gray"></span>
+              <span class="section-label">NGĂN 2</span>
+            </div>
+            <div class="readout-num mono"><span id="live-ngan2">—</span> <span class="readout-u">g</span></div>
+          </div>
+          <div class="readout-stamp mono">cập nhật <span id="weight-updated">--:--:--</span></div>
+        </div>
+
+        <div class="chart-box">
+          <canvas id="weight-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Khối biểu đồ nhiệt độ và độ ẩm DHT22 -->
+      <section class="panel chart-panel">
+        <div class="panel-bar">
+          <div class="panel-bar-title">
+            <span class="section-label">NHIỆT ĐỘ &amp; ĐỘ ẨM NGĂN TỦ (DHT22)</span>
+            <span class="panel-unit mono">°C / %RH</span>
+          </div>
+          <div class="range-tabs" data-chart-group="env">
+            <button type="button" class="range-btn active" data-points="20">1 PHÚT</button>
+            <button type="button" class="range-btn" data-points="40">5 PHÚT</button>
+            <button type="button" class="range-btn" data-points="60">1 GIỜ</button>
+          </div>
+        </div>
+
+        <div class="readout-strip readout-strip-env">
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-teal"></span>
+              <span class="section-label">ĐỘ ẨM TỦ</span>
+            </div>
+            <div class="readout-num mono" id="live-rh-wrap"><span id="live-rh">—</span> <span class="readout-u">%RH</span></div>
+            <div class="readout-note mono" id="live-rh-note">Ngưỡng 70,0 %RH</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-gray"></span>
+              <span class="section-label">NHIỆT ĐỘ TỦ</span>
+            </div>
+            <div class="readout-num mono"><span id="live-temp">—</span> <span class="readout-u">°C</span></div>
+            <div class="readout-note mono">Trong tủ Node B</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-orange-dash"></span>
+              <span class="section-label">NGƯỠNG ĐỘ ẨM</span>
+            </div>
+            <div class="readout-num mono">70,0 <span class="readout-u">%RH</span></div>
+            <div class="readout-note mono">Cảnh báo vượt ngưỡng</div>
+          </div>
+          <div class="readout-stamp mono">cập nhật <span id="env-updated">--:--:--</span></div>
+        </div>
+
+        <div class="chart-box">
+          <canvas id="env-chart"></canvas>
+        </div>
+      </section>
+
+      <!-- Khối biểu đồ số pin trong hộc 18650 -->
+      <section class="panel chart-panel">
+        <div class="panel-bar">
+          <div class="panel-bar-title">
+            <span class="section-label">SỐ PIN TRONG HỘC (PIN 18650)</span>
+            <span class="panel-unit mono">cell / g</span>
+          </div>
+          <div class="range-tabs" data-chart-group="battery">
+            <button type="button" class="range-btn active" data-points="20">1 PHÚT</button>
+            <button type="button" class="range-btn" data-points="40">5 PHÚT</button>
+            <button type="button" class="range-btn" data-points="60">1 GIỜ</button>
+          </div>
+        </div>
+
+        <div class="readout-strip readout-strip-battery">
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-teal"></span>
+              <span class="section-label">SỐ PIN HIỆN TẠI</span>
+            </div>
+            <div class="readout-num mono" id="live-pin-wrap"><span id="live-pin-count">6</span> <span class="readout-u">/ 8 cell</span><span class="metric-warn-mark" id="live-pin-warn"></span></div>
+            <div class="readout-note mono" id="live-pin-note">m_unit 46,0 g · cảnh báo ≤ 2 cell</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-ink"></span>
+              <span class="section-label">KHỐI LƯỢNG HỘC PIN</span>
+            </div>
+            <div class="readout-num mono"><span id="live-pin-weight">276,0</span> <span class="readout-u">g</span></div>
+            <div class="readout-note mono">Load cell 1 kg + HX711 #3</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-head">
+              <span class="line-key key-orange-dash"></span>
+              <span class="section-label">NGƯỠNG SẮP HẾT</span>
+            </div>
+            <div class="readout-num mono">2 <span class="readout-u">cell</span></div>
+            <div class="readout-note mono">Cảnh báo quản lý khi ≤ 2</div>
+          </div>
+          <div class="readout-stamp mono">cập nhật <span id="battery-updated">--:--:--</span></div>
+        </div>
+
+        <div class="chart-box">
+          <canvas id="battery-chart"></canvas>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB 3: GIAO DỊCH -->
+    <section class="tab-panel" id="tab-giao-dich">
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">LỊCH SỬ GIAO DỊCH</h2>
+          <span class="section-meta mono" id="transactions-count-text">0 GIAO DỊCH</span>
+        </div>
+        <div class="panel">
+          <div class="table-wrap">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>MÃ</th>
+                  <th>SINH VIÊN</th>
+                  <th>VẬT PHẨM</th>
+                  <th>GIỜ MƯỢN</th>
+                  <th>GIỜ TRẢ</th>
+                  <th>KẾT QUẢ</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB 4: KHO -->
+    <section class="tab-panel" id="tab-kho">
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">DANH MỤC 4 DỤNG CỤ &amp; PIN 18650</h2>
+          <span class="section-meta mono">DUNG SAI = MIN(10 g, ½ PHỤ KIỆN NHẸ NHẤT) · PIN: ±(2 + 1,5×n) g</span>
+        </div>
+        <div class="panel">
+          <div class="table-wrap">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>MÃ</th>
+                  <th>TÊN</th>
+                  <th>NGĂN</th>
+                  <th class="col-right">KHỐI LƯỢNG CHUẨN</th>
+                  <th class="col-right">DUNG SAI</th>
+                  <th>TRẠNG THÁI</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <h2 class="section-label">SƠ ĐỒ TỦ (2 NGĂN DỤNG CỤ + HỘC PIN)</h2>
+          <span class="section-meta mono">NODE B · 3 LOAD CELL + 3 SERVO</span>
+        </div>
+        <div id="compartment-schematic" class="schematic-grid"></div>
+      </section>
+    </section>
+
+    <!-- TAB 5: THIẾT LẬP -->
+    <section class="tab-panel" id="tab-thiet-lap">
+      <div class="setup-grid">
+        <!-- Khối 1: Mạng & Thời gian -->
+        <section class="panel setup-panel">
+          <div class="setup-head">
+            <h2 class="section-label">MẠNG &amp; THỜI GIAN</h2>
+            <span class="section-meta mono">HOSTAPD · DNSMASQ · CHRONY</span>
+          </div>
+          <div class="setup-kv-list">
+            <div class="setup-kv">
+              <span class="meta-k">SSID WI-FI AP</span>
+              <span class="mono">TramDungCu (WPA2-PSK · kênh 6)</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">ĐỊA CHỈ PI 4</span>
+              <span class="mono">192.168.4.1 · http://tram.local:8000</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">THIẾT BỊ ĐANG NỐI</span>
+              <span class="mono">4 (2 node + 1 laptop + 1 điện thoại)</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">ĐƯỜNG INTERNET (USB0)</span>
+              <span class="mono" id="setup-internet-status">● CÓ</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">GIỜ HỆ THỐNG (ASIA/HO_CHI_MINH)</span>
+              <span class="mono" id="setup-sys-time">--:--:--</span>
+            </div>
+          </div>
+          <div class="setup-actions">
+            <button type="button" class="btn-ink" id="sync-browser-time-btn">LẤY GIỜ TỪ TRÌNH DUYỆT</button>
+            <button type="button" class="btn-subtle" id="toggle-usb0-btn">ĐỔI TRẠNG THÁI USB0</button>
+            <span class="report-feedback mono" id="setup-time-feedback"></span>
+          </div>
+        </section>
+
+        <!-- Khối 2: Đăng ký thẻ mới -->
+        <section class="panel setup-panel">
+          <div class="setup-head">
+            <h2 class="section-label">ĐĂNG KÝ THẺ MỚI</h2>
+            <span class="section-meta mono">NODE A · MODE: ENROLL</span>
+          </div>
+          <div class="enroll-status mono" id="enroll-status-box">
+            Sẵn sàng. Bấm "Bắt đầu" để đưa Node A vào chế độ quét thẻ mới.
+          </div>
+          <div class="setup-actions">
+            <button type="button" class="btn-ink" id="enroll-start-btn">BẮT ĐẦU</button>
+            <button type="button" class="btn-subtle" id="enroll-dup-btn">THỬ UID TRÙNG</button>
+          </div>
+          <form id="enroll-form" class="report-form" hidden>
+            <div class="setup-kv">
+              <span class="meta-k">UID THẺ ĐỌC ĐƯỢC</span>
+              <span class="mono" id="enroll-uid-val">—</span>
+            </div>
+            <div class="enroll-fields-grid">
+              <div>
+                <label class="field-label" for="enroll-mssv">MSSV</label>
+                <input id="enroll-mssv" class="field-input mono" type="text" placeholder="20221999">
+              </div>
+              <div>
+                <label class="field-label" for="enroll-name">Họ tên</label>
+                <input id="enroll-name" class="field-input" type="text" placeholder="Trần Văn An">
+              </div>
+              <div>
+                <label class="field-label" for="enroll-pin">PIN 6 số</label>
+                <input id="enroll-pin" class="field-input mono" type="password" inputmode="numeric" maxlength="6" placeholder="123456">
+              </div>
+            </div>
+            <div class="setup-actions">
+              <button type="submit" class="btn-ink">LƯU THẺ</button>
+              <span class="report-feedback mono" id="enroll-feedback"></span>
+            </div>
+          </form>
+        </section>
+
+        <!-- Khối 3: Sao lưu CSDL -->
+        <section class="panel setup-panel">
+          <div class="setup-head">
+            <h2 class="section-label">SAO LƯU CSDL</h2>
+            <span class="section-meta mono">SQLITE3 .BACKUP · 02:00</span>
+          </div>
+          <div class="setup-kv-list">
+            <div class="setup-kv">
+              <span class="meta-k">SAO LƯU LẦN CUỐI</span>
+              <span class="mono" id="backup-last-time">02:00 hôm nay</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">SỐ BẢN ĐANG GIỮ (USB)</span>
+              <span class="mono" id="backup-count">7 / 7 bản</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">DUNG LƯỢNG CSDL</span>
+              <span class="mono">1,4 MB (WAL, synchronous=FULL)</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">ẢNH LƯU TRỮ</span>
+              <span class="mono">/var/lib/tram/img (giữ 30 ngày)</span>
+            </div>
+          </div>
+          <div class="setup-actions">
+            <button type="button" class="btn-ink" id="backup-now-btn">SAO LƯU NGAY</button>
+            <span class="report-feedback mono" id="backup-feedback"></span>
+          </div>
+        </section>
+
+        <!-- Khối 4: Hệ thống -->
+        <section class="panel setup-panel">
+          <div class="setup-head">
+            <h2 class="section-label">HỆ THỐNG (RASPBERRY PI 4)</h2>
+            <span class="section-meta mono">SYSTEMD · MICROSD</span>
+          </div>
+          <div class="setup-kv-list">
+            <div class="setup-kv">
+              <span class="meta-k">NHIỆT ĐỘ CPU PI</span>
+              <span class="mono" id="sys-cpu-temp">52,4 °C</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">THẺ NHỚ ĐÃ DÙNG</span>
+              <span class="mono">6,8 / 32 GB (21%)</span>
+            </div>
+            <div class="setup-kv">
+              <span class="meta-k">THỜI GIAN CHẠY LIÊN TỤC</span>
+              <span class="mono" id="sys-uptime">3 ngày 04:12:08</span>
+            </div>
+          </div>
+          <div class="setup-actions">
+            <button type="button" class="btn-warn-outline" id="shutdown-btn">TẮT HỆ THỐNG AN TOÀN</button>
+            <span class="report-feedback mono" id="shutdown-feedback"></span>
+          </div>
+          <div id="shutdown-confirm-box" class="shutdown-confirm" hidden>
+            <span class="mono is-warn">Xác nhận tắt Pi 4 an toàn để tránh hỏng microSD?</span>
+            <div class="setup-actions">
+              <button type="button" class="btn-warn-outline" id="shutdown-confirm-yes">XÁC NHẬN TẮT</button>
+              <button type="button" class="btn-subtle" id="shutdown-confirm-no">HỦY</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -51,7 +51,7 @@ arrow(8.05, 4.35, 8.05, 5.15, "HTTPS")
 # Devices
 box(0.6, 1.95, 2.2, 0.85, "CAMERA\n(CSI / USB)", fc="#e9f6ec", bold=True)
 box(3.15, 1.95, 2.9, 0.85, "ESP32 NODE A\nKiosk & khay trả", fc="#e9f6ec", bold=True)
-box(6.4, 1.95, 3.0, 0.85, "ESP32 NODE B\nTủ 2 ngăn", fc="#e9f6ec", bold=True)
+box(6.4, 1.95, 3.0, 0.85, "ESP32 NODE B\nTủ 2 ngăn + hộc pin", fc="#e9f6ec", bold=True)
 
 arrow(1.7, 2.8, 1.7, 3.35, "ảnh")
 arrow(4.6, 2.8, 4.6, 3.35, "Wi-Fi / MQTT", both=True)
@@ -61,7 +61,7 @@ arrow(7.9, 2.8, 7.9, 3.35, "Wi-Fi / MQTT", both=True)
 box(3.15, 0.1, 2.9, 1.4,
     "RFID RC522 (SPI)\nLCD 16x2 (I2C)\nLoad cell khay + HX711\nCòi · Đèn khay · Nút báo hỏng (GPIO)", fs=8.6)
 box(6.4, 0.1, 3.0, 1.4,
-    "2 × Load cell + HX711\n2 × Servo khóa ngăn (PWM)\nLED đỏ/xanh báo ngăn\n(GPIO)", fs=8.8)
+    "3 × Load cell + HX711\n3 × Servo khóa (PWM)\nLED đỏ/xanh 3 ngăn/hộc\nDHT22 (GPIO)", fs=8.5)
 arrow(4.6, 1.5, 4.6, 1.95, both=True)
 arrow(7.9, 1.5, 7.9, 1.95, both=True)
 

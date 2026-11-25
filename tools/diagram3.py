@@ -53,7 +53,7 @@ ax.text(10.75, 4.6, "5V", color=PWR, fontsize=9, va="center")
 
 # Nodes
 box(0.3, 1.95, 3.6, 1.0, "KHỐI ĐIỀU KHIỂN NODE A", "ESP32 – Kiosk & khay trả", fc="#e9f6ec")
-box(8.1, 1.95, 3.6, 1.0, "KHỐI ĐIỀU KHIỂN NODE B", "ESP32 – Tủ 2 ngăn", fc="#e9f6ec")
+box(8.1, 1.95, 3.6, 1.0, "KHỐI ĐIỀU KHIỂN NODE B", "ESP32 – Tủ 2 ngăn + hộc pin", fc="#e9f6ec")
 arrow(3.9, 2.6, 4.6, 3.75, "Wi-Fi/MQTT", both=True, lx=-0.1, ly=-0.05)
 arrow(8.1, 2.6, 7.4, 3.75, "Wi-Fi/MQTT", both=True, lx=0.1, ly=-0.05)
 
@@ -66,9 +66,9 @@ arrow(2.92, 1.4, 2.7, 1.95)
 arrow(3.6, 1.95, 4.4, 1.4)
 
 # Peripherals Node B
-box(6.2, 0.1, 1.85, 1.3, "ĐO KHỐI LƯỢNG", "2 × load cell\n1 kg + HX711")
-box(8.15, 0.1, 1.85, 1.3, "CHẤP HÀNH", "2 × servo SG90\nkhóa ngăn (PWM)")
-box(10.1, 0.1, 1.85, 1.3, "BÁO NGĂN", "2 × LED đỏ/xanh\n(GPIO)")
+box(6.2, 0.1, 1.85, 1.3, "ĐO KHỐI LƯỢNG", "3 × load cell\n1 kg + HX711")
+box(8.15, 0.1, 1.85, 1.3, "CHẤP HÀNH", "3 × servo SG90\nkhóa ngăn/hộc")
+box(10.1, 0.1, 1.85, 1.3, "BÁO NGĂN & MT", "3 × LED đỏ/xanh\n+ DHT22 (GPIO)")
 arrow(7.6, 1.4, 8.5, 1.95)
 arrow(9.3, 1.95, 9.1, 1.4)
 arrow(10.9, 1.95, 11.0, 1.4)

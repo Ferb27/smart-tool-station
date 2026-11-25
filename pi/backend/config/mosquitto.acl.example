@@ -1,0 +1,18 @@
+# Mẫu, chưa chạy thử trên Pi thật
+# Đường dẫn triển khai trên Pi: /etc/mosquitto/acl
+
+# Node A (kiosk + khay trả): chỉ ghi nhánh kioskA, đọc lệnh và thông báo OTA
+user kioska
+topic write lab/kioskA/#
+topic read lab/kioskA/cmd
+topic read lab/kioskA/ota
+
+# Node B (tủ 2 ngăn + hộc pin): chỉ ghi nhánh cabB, đọc lệnh và thông báo OTA
+user cabb
+topic write lab/cabB/#
+topic read lab/cabB/cmd
+topic read lab/cabB/ota
+
+# Backend Python trên Pi 4: toàn quyền đọc/ghi nhánh lab/#
+user backend
+topic readwrite lab/#

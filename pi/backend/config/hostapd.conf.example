@@ -1,0 +1,21 @@
+# Mẫu, chưa chạy thử trên Pi thật
+# Đường dẫn triển khai trên Pi: /etc/hostapd/hostapd.conf
+# Bật dịch vụ: sudo systemctl unmask hostapd && sudo systemctl enable hostapd
+
+interface=wlan0
+driver=nl80211
+ssid=TramDungCu
+hw_mode=g
+channel=6
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+
+# Bảo mật WPA2-PSK (đặt mật khẩu đủ dài trước khi triển khai)
+wpa=2
+wpa_passphrase=THAY_MAT_KHAU_WIFI_DU_DAI
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+country_code=VN
+ieee80211n=1

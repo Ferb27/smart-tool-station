@@ -1,0 +1,19 @@
+# Mẫu, chưa chạy thử trên Pi thật
+# Đường dẫn triển khai trên Pi: /etc/dnsmasq.conf
+
+interface=wlan0
+bind-interfaces
+domain-needed
+bogus-priv
+
+# Dải DHCP cho điện thoại sinh viên và laptop quản lý
+dhcp-range=192.168.4.10,192.168.4.50,255.255.255.0,24h
+dhcp-option=option:router,192.168.4.1
+dhcp-option=option:dns-server,192.168.4.1
+
+# Giữ chỗ IP tĩnh theo địa chỉ MAC (thay MAC thật của 2 ESP32)
+dhcp-host=AA:BB:CC:DD:EE:01,192.168.4.11,nodeA,infinite
+dhcp-host=AA:BB:CC:DD:EE:02,192.168.4.12,nodeB,infinite
+
+# Phân giải tên miền nội bộ (tránh lỗi mDNS/Avahi trên Android)
+address=/tram.local/192.168.4.1
